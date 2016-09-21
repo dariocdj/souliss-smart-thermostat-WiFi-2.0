@@ -83,7 +83,9 @@ if (!isnan(temperaturaN)) {
     dht.begin();
   }
   
+Serial.print("        temperatura");Serial.println(temperatura);
 temperaturadec = dopovirgola(temperatura);
+Serial.print("        temperaturadec");Serial.println(temperaturadec);
 temperatura_arrotondata = arrotonda(temperatura);
 umidita = dht.readHumidity();
 
@@ -111,11 +113,17 @@ float arrotonda(const float v)
 
 int dopovirgola(const float v)
 {
-  float vX10 = v * 1;
-  int vInt = vX10;
+  float vX1 = v;
+  Serial.print("v ");Serial.println(v);
+  Serial.print("vX1 ");Serial.println(vX1);
+  int vInt = vX1;
+  Serial.print("vInt ");Serial.println(vInt);
   int result;
-  float diff = vX10 - vInt;
-  
+  float diff = vX1 - vInt;
+  Serial.print("diff1 ");Serial.println(diff);
+  diff = abs(diff);
+  Serial.print("diff2 ");Serial.println(diff);
+  Serial.print("diff3 ");Serial.println(diff*10);
   return result = diff * 10;
 }
 
