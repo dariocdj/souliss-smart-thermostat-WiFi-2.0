@@ -3,10 +3,8 @@
 #include "language.h"
 #include "ntp.h"
 
-//Var Globali
-float oldsetpoint;
 
-float arrotonda2(const float v)
+float arrotonda(const float v)
 {
   float vX10 = v * 10;
   int vInt = (int) vX10;
@@ -18,7 +16,7 @@ float arrotonda2(const float v)
   }
 }
 
-int dopovirgola2(const float v)
+int dopovirgola(const float v)
 {
   float vX10 = v * 1;
   int vInt = (int) vX10;
@@ -27,29 +25,36 @@ int dopovirgola2(const float v)
   return result = diff * 10;
 }
 
+
+//CALCOLO ANDAMENTO
+///////////////////////////////////////////////////////////////////////////
 float deltaT = 0;
 float pretemperature = 0;
 void calcoloAndamento(float temperature) {
-  //CALCOLO ANDAMENTO
-  ///////////////////////////////////////////////////////////////////////////
-  SERIAL_OUT.println("Refresh DeltaT & Trend Arrow ");
+  #ifdef DEBUGDEV
+    SERIAL_OUT.println("Refresh DeltaT & Trend Arrow ");
+  #endif
   deltaT = temperature - pretemperature;
-  Serial.print("DELTAT "); Serial.println(deltaT, DEC);
+  #ifdef DEBUGDEV
+    SERIAL_OUT.print("DELTAT "); SERIAL_OUT.println(deltaT, DEC);
+  #endif
   if (temperature > pretemperature && deltaT || 0) {
-    SERIAL_OUT.println("Trend Arrow PLUS ");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("Trend Arrow PLUS ");
+    #endif
   } else if (deltaT == 0) {
-
-    SERIAL_OUT.println("Trend Arrow NONE ");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("Trend Arrow NONE ");
+    #endif
   }
   else {
-
-    SERIAL_OUT.println("Trend Arrow MINUS ");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("Trend Arrow MINUS ");
+    #endif
   }
   pretemperature = temperature;
-  ///////////////////////////////////////////////////////////////////////////
-
 }
-
+///////////////////////////////////////////////////////////////////////////
 
 
 

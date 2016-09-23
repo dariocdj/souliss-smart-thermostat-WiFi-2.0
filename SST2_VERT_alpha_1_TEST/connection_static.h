@@ -11,18 +11,15 @@
     GNU General Public License for more details.
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
     Modified by Dario Di Maio, original code from
        https://github.com/esp8266/Arduino
-
 ***************************************************************************/
 uint8_t static_ip_address[4]  = {STATIC_IP}; 
 uint8_t static_subnet_mask[4] = {STATIC_SUBNET};
 uint8_t static_ip_gateway[4]  = {STATIC_IP_GW}; 
 
 #define STATIC_CONNECTION_Init_DHCP()              \
-  SERIAL_OUT.println("start STATIC_CONNECTION_Init_DHCP"); \
-  //TODO  display_print_splash_connection_to_home_wifi(ucg); \
+    SERIAL_OUT.println("start STATIC_CONNECTION_Init_DHCP"); \
   /** Connect to the WiFi network and get an address from DHCP*/ \
   GetIPAddress(); \
   SERIAL_OUT.println("Address received"); \
@@ -38,4 +35,3 @@ uint8_t static_ip_gateway[4]  = {STATIC_IP_GW};
   
 #define STATIC_CONNECTION_fast()       \
 FAST_PeerComms();\
-

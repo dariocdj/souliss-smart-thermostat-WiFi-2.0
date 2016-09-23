@@ -4,8 +4,10 @@
     -DHT22 Temperature & Humidity Sensor
 
   This example is only supported on ESP8266.
-  Developed by mcbittech
+  Originally Developed by mcbittech
 ***************************************************************************/
+//#define DEBUG                                 //USER DEBUG ON UART0
+//#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
 
 #include "SoulissFramework.h"                 // Let the IDE point to the Souliss framework
 
@@ -95,22 +97,34 @@ void EEPROM_Reset() {
 void subscribeTopics() {
   if (subscribedata(TOPIC1, mypayload, &mypayload_len)) {
     float32((uint16_t*) mypayload,  &fTopic_A1_Output);
-    SERIAL_OUT.print("TOPIC1: "); SERIAL_OUT.println(fTopic_A1_Output);
+    #ifdef DEBUG
+      SERIAL_OUT.print("TOPIC1: "); SERIAL_OUT.println(fTopic_A1_Output); 
+    #endif
   } else if (subscribedata(TOPIC2, mypayload, &mypayload_len)) {
     float32((uint16_t*) mypayload,  &fTopic_A2_Output);
-    SERIAL_OUT.print("TOPIC2: "); SERIAL_OUT.println(fTopic_A2_Output);
+    #ifdef DEBUG
+      SERIAL_OUT.print("TOPIC2: "); SERIAL_OUT.println(fTopic_A2_Output);
+    #endif
   } else if (subscribedata(TOPIC3, mypayload, &mypayload_len)) {
     float32((uint16_t*) mypayload,  &fTopic_A3_Output);
-    SERIAL_OUT.print("TOPIC3: "); SERIAL_OUT.println(fTopic_A3_Output);
+    #ifdef DEBUG
+      SERIAL_OUT.print("TOPIC3: "); SERIAL_OUT.println(fTopic_A3_Output);
+    #endif
   } else if (subscribedata(TOPIC4, mypayload, &mypayload_len)) {
     float32((uint16_t*) mypayload,  &fTopic_A4_Output);
-    SERIAL_OUT.print("TOPIC4: "); SERIAL_OUT.println(fTopic_A4_Output);
+    #ifdef DEBUG
+      SERIAL_OUT.print("TOPIC4: "); SERIAL_OUT.println(fTopic_A4_Output);
+    #endif
   } else if (subscribedata(TOPIC5, mypayload, &mypayload_len)) {
     float32((uint16_t*) mypayload,  &fTopic_A5_Output);
-    SERIAL_OUT.print("TOPIC5: "); SERIAL_OUT.println(fTopic_A5_Output);
+    #ifdef DEBUG
+      SERIAL_OUT.print("TOPIC5: "); SERIAL_OUT.println(fTopic_A5_Output);
+    #endif  
   } else if (subscribedata(TOPIC6, mypayload, &mypayload_len)) {
     float32((uint16_t*) mypayload,  &fTopic_A6_Output);
-    SERIAL_OUT.print("TOPIC6: "); SERIAL_OUT.println(fTopic_A6_Output);
+    #ifdef DEBUG
+      SERIAL_OUT.print("TOPIC6: "); SERIAL_OUT.println(fTopic_A6_Output);
+    #endif  
   }
 }
 
@@ -123,7 +137,9 @@ void setSoulissDataChanged() {
 
 
 void set_ThermostatModeOn(U8 slot) {
-  SERIAL_OUT.println("set_ThermostatModeOn");
+  #ifdef DEBUG
+    SERIAL_OUT.println("set_ThermostatModeOn");
+  #endif  
   memory_map[MaCaco_OUT_s + slot] |= Souliss_T3n_SystemOn;
   memory_map[MaCaco_OUT_s + slot] &= ~Souliss_T3n_HeatingMode;
 
@@ -155,7 +171,9 @@ boolean getSoulissSystemState() {
 void getTemp() {
   // Read temperature value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readTemperature();
+  #ifdef DEBUGDEV
     SERIAL_OUT.print("ACQ Temperature: "); SERIAL_OUT.println(fValT);
+  #endif  
   if (!isnan(fValT)) {
     temperature = fValT; //memorizza temperatura se non è Not A Number
     //Import temperature into T31 Thermostat
@@ -167,7 +185,9 @@ void getTemp() {
 
   // Read humidity value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readHumidity();
-  SERIAL_OUT.print("acquisizione Humidity: "); SERIAL_OUT.println(fValT);
+  #ifdef DEBUG
+    SERIAL_OUT.print("ACQ Humidity: "); SERIAL_OUT.println(fValT);
+  #endif
   if (!isnan(fValT)) {
     humidity = fValT;
     ImportAnalog(SLOT_HUMIDITY, &humidity);
@@ -178,7 +198,9 @@ void getTemp() {
   if ( bFlagBegin) {
     //if DHT fail then try to reinit
     dht.begin();
-    SERIAL_OUT.println(" dht.begin();");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println(" dht.begin();");
+    #endif
   }
 }
 
@@ -198,35 +220,40 @@ void bright(int lum) {
   int val = ((float)lum);
   if (val > 100) val = 100;
   if (val < 0) val = 0;
-  //TODO    analogWrite(BACKLED, val);
-  Serial1.print("dim=");Serial.print(val);
-  Serial1.write(0xff);
-  Serial1.write(0xff);
-  Serial1.write(0xff); 
+  #ifdef DEBUGDEV
+    SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(val);
+  #endif  
+  DISPLAY.print("dim=");DISPLAY.print(val);
+  DISPLAY.write(0xff);
+  DISPLAY.write(0xff);
+  DISPLAY.write(0xff); 
 
 }
 
 void setup()
 {
-
-  SERIAL_OUT.begin(115200);
+  #ifdef DEBUG || DEBUGDEV
+    SERIAL_OUT.begin(115200);
+  #endif
+  DISPLAY.begin(9600);
 
   //SPIFFS
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
   SPIFFS.begin();
   File  sst_spiffs_verifica = SPIFFS.open("/sst_settings.json", "r");
   if (!sst_spiffs_verifica) {
-    Serial.println(" ");
-    Serial.println("Non riesco a leggere sst_settings.json! formatto la SPIFFS...");
-    SPIFFS.format();
-    Serial.println("Spiffs formatted");
-    ReadAllSettingsFromPreferences();
-    //ReadCronoMatrixSPIFFS();
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println(" ");
+      SERIAL_OUT.println("Non riesco a leggere sst_settings.json! formatto la SPIFFS...");
+      SPIFFS.format();
+      SERIAL_OUT.println("Spiffs formatted");
+      ReadAllSettingsFromPreferences();
+      //ReadCronoMatrixSPIFFS();
+    #endif  
   }
   else
   {
     ReadAllSettingsFromSPIFFS();
-    //ReadCronoMatrixSPIFFS();
   }
 
 
@@ -270,7 +297,9 @@ void setup()
   // Set Hostname.
   String hostname(HOSTNAME);
   hostname += String(ESP.getChipId(), HEX);
-  SERIAL_OUT.print("set OTA hostname: "); SERIAL_OUT.println(hostname);
+  #ifdef DEBUG
+    SERIAL_OUT.print("set OTA hostname: "); SERIAL_OUT.println(hostname);
+  #endif
   ArduinoOTA.setHostname((const char *)hostname.c_str());
   ArduinoOTA.begin();
 
@@ -343,21 +372,28 @@ EXECUTEFAST() {
         //EXIT MENU - Actions
         //write min bright on T19
         //memory_map[MaCaco_OUT_s + SLOT_BRIGHT_DISPLAY + 1] = getDisplayBright();
-        SERIAL_OUT.print("Set Display Bright: "); SERIAL_OUT.println(memory_map[MaCaco_OUT_s + SLOT_BRIGHT_DISPLAY + 1]);
+        #ifdef DEBUGDEV
+          SERIAL_OUT.print("Set Display Bright: "); SERIAL_OUT.println(memory_map[MaCaco_OUT_s + SLOT_BRIGHT_DISPLAY + 1]);
+        #endif
 
-
-          //ON
+        //ON
+        #ifdef DEBUGDEV
           SERIAL_OUT.println("Set system ON ");
+        #endif
           set_ThermostatModeOn(SLOT_THERMOSTAT);        // Set System On
 
-          //OFF
+        //OFF
+        #ifdef DEBUGDEV
           SERIAL_OUT.println("Set system OFF ");
-          set_ThermostatOff(SLOT_THERMOSTAT);
+        #endif
+        set_ThermostatOff(SLOT_THERMOSTAT);
         
         memory_map[MaCaco_IN_s + SLOT_THERMOSTAT] = Souliss_T3n_RstCmd;          // Reset
         // Trig the next change of the state
         setSoulissDataChanged();
-        SERIAL_OUT.println("Init .....");
+        #ifdef DEBUGDEV
+          SERIAL_OUT.println("Init .....");
+        #endif
       
   }
 
@@ -390,10 +426,10 @@ EXECUTESLOW() {
   SLOW_50s() {
       getTemp(); 
       //if (getCrono()) {
-      //  Serial.println("CRONO: aggiornamento");
+      //  SERIAL_OUT.println("CRONO: aggiornamento");
       //  setSetpoint(checkNTPcrono(ucg));
       //  setEncoderValue(checkNTPcrono(ucg));
-      //  Serial.print("CRONO: setpoint: "); Serial.println(setpoint);
+      //  SERIAL_OUT.print("CRONO: setpoint: "); SERIAL_OUT.println(setpoint);
       //}
   }
 

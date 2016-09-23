@@ -11,10 +11,8 @@
     GNU General Public License for more details.
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
     Modified by Dario Di Maio, original code from
        https://github.com/esp8266/Arduino
-
 ***************************************************************************/
 #define DYNAMIC_CONNECTION_Init()              /** Read the IP configuration from the EEPROM, if not available start the node as access point */ \
   SERIAL_OUT.println("start DYNAMIC_CONNECTION_Init"); \

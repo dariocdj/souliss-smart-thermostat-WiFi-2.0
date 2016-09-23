@@ -27,20 +27,21 @@ void save_spiffs_prefs(int json_iDisplayBright, int json_bClock, int json_timeZo
   root["Crono"] = json_bCrono;
   root["CronoLearn"] = json_bCronoLearn;
   root["Dispositivo"] = json_bSystem;
-  //Serial.print("Ecco i dati in json: ");
-  //root.printTo(Serial);
   char buffer[256];
   root.printTo(buffer, sizeof(buffer));
-  //Serial.println();
 
   // open file for writing
   File sst_spiffs = SPIFFS.open("/sst_settings.json", "w");
   if (!sst_spiffs) {
-    Serial.println("sst_settings.json open failed");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("sst_settings.json open failed");
+    #endif
   }
   //qui salvo il buffer su file
   sst_spiffs.println(buffer);
-  Serial.print("Salvo in SPIFFS il buffer con i settings :"); Serial.println(buffer);
+  #ifdef DEBUGDEV
+    SERIAL_OUT.print("Salvo in SPIFFS il buffer con i settings :"); SERIAL_OUT.println(buffer);
+  #endif
   delay(1);
   //chiudo il file
   sst_spiffs.close();
@@ -49,43 +50,53 @@ void save_spiffs_prefs(int json_iDisplayBright, int json_bClock, int json_timeZo
 int read_spiffs_prefs(const char*  valuedaleggere) {
   File  sst_spiffs_inlettura = SPIFFS.open("/sst_settings.json", "r");
   if (!sst_spiffs_inlettura) {
-    Serial.println("sst_settings.json open failed");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("sst_settings.json open failed");
+    #endif
     return 0;
   }
   String risultato = sst_spiffs_inlettura.readStringUntil('\n');
-  //Serial.print("Ho letto dal file : ");Serial.println(risultato);
+  //SERIAL_OUT.print("Ho letto dal file : ");SERIAL_OUT.println(risultato);
   char json[200];
   risultato.toCharArray(json, 200);
-  //Serial.print("Ecco l'array json convertito: ");Serial.println(json);
+  //SERIAL_OUT.print("Ecco l'array json convertito: ");SERIAL_OUT.println(json);
   StaticJsonBuffer<200> jsonBuffer_inlettura;
   JsonObject& root_inlettura = jsonBuffer_inlettura.parseObject(json);
   if (!root_inlettura.success()) {
-    Serial.println("parseObject() failed");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("parseObject() failed");
+    #endif
     return 0;
   }
   //leggo il valore e lo parso:
   int risultatoparsed = root_inlettura[valuedaleggere];
-  Serial.print("Spiffs Json parsed value of "); Serial.print(valuedaleggere); Serial.print(" :");
-  Serial.println(risultatoparsed);
+  #ifdef DEBUGDEV
+    SERIAL_OUT.print("Spiffs Json parsed value of "); SERIAL_OUT.print(valuedaleggere); SERIAL_OUT.print(" :");SERIAL_OUT.println(risultatoparsed);
+  #endif
   sst_spiffs_inlettura.close();
   return risultatoparsed;
 }
 
 
 void spiffs_Reset() {
-  Serial.println("Reset EEPROM");
-
-  Serial.println("SPIFFS Formatting... ");
-
+  #ifdef DEBUGDEV
+    SERIAL_OUT.println("SPIFFS Formatting... ");
+  #endif
   if (SPIFFS.format()) {
-    Serial.println("OK");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("OK");
+    #endif
   } else {
-    Serial.println("Fail");
+    #ifdef DEBUGDEV
+      SERIAL_OUT.println("Fail");
+    #endif
   }
 }  
 
 void ReadAllSettingsFromPreferences() {
-  SERIAL_OUT.println("Read ALL Preferences value....");
+  #ifdef DEBUGDEV
+    SERIAL_OUT.println("Read ALL Preferences value....");
+  #endif
   iDisplayBright = BRIGHT_MIN_DEFAULT;
   bClock = CLOCK;
   bCrono = CRONO;
@@ -99,7 +110,9 @@ void ReadAllSettingsFromPreferences() {
 
 void ReadAllSettingsFromSPIFFS() {
   //SPIFFS
-  SERIAL_OUT.println("Read All Settings From SPIFFS.... ");
+  #ifdef DEBUGDEV
+    SERIAL_OUT.println("Read All Settings From SPIFFS.... ");
+  #endif
   iDisplayBright = read_spiffs_prefs("Luminosita");
   bClock = read_spiffs_prefs("Orologio");
   bCrono = read_spiffs_prefs("Crono");
