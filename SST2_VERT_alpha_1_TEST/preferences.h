@@ -1,3 +1,14 @@
+/**************************************************************************
+  Copyright (C) 2016  mcbittech
+  Wi-Fi Smart Thermostat 2.0 based on Souliss IoT Framework
+    -wemos D1 mini
+    -DHT22 Temperature & Humidity Sensor
+
+  This example is only supported on ESP8266.
+  Originally Developed by mcbittech
+***************************************************************************/
+
+
 #include <Arduino.h>
 
 //LOCAL CRONO FUNCTION
@@ -45,8 +56,8 @@
 // **** Define the WiFi name and password ****
 //Only for DYNAMIC_CONNECTION = 0
 #define WIFICONF_INSKETCH
-#define WiFi_SSID               "WiFi_Flavio_2G_1P"
-#define WiFi_Password           "aeroxr6718"   
+#define WiFi_SSID               "   "
+#define WiFi_Password           "   "   
 
 // Define the network configuration according to your router settingsuration according to your router settings
 // and the other on the wireless oneless one
