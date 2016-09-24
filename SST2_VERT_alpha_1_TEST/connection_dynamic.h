@@ -14,6 +14,9 @@
     Modified by Dario Di Maio, original code from
        https://github.com/esp8266/Arduino
 ***************************************************************************/
+
+
+
 #define DYNAMIC_CONNECTION_Init()              /** Read the IP configuration from the EEPROM, if not available start the node as access point */ \
   SERIAL_OUT.println("start DYNAMIC_CONNECTION_Init"); \
   if (!ReadIPConfiguration()) \

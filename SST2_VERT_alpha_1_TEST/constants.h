@@ -1,4 +1,5 @@
 /**************************************************************************
+  Copyright (C) 2016  mcbittech
   Wi-Fi Smart Thermostat 2.0 based on Souliss IoT Framework
     -wemos D1 mini
     -DHT22 Temperature & Humidity Sensor
@@ -6,6 +7,7 @@
   This example is only supported on ESP8266.
   Originally Developed by mcbittech
 ***************************************************************************/
+
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
@@ -65,4 +67,4 @@
 #define TEMP_MINUS 1
 
 #define SERIAL_OUT Serial
-#define DISPLAY Serial1
+//#define serialDisplay SoftwareSerial serialDisplay(14, 12, false, 256);  //Pin 5 e 6 wemos for UART1

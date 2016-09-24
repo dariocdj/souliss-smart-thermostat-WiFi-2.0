@@ -1,4 +1,5 @@
 /**************************************************************************
+  Copyright (C) 2016  mcbittech
   Wi-Fi Smart Thermostat 2.0 based on Souliss IoT Framework
     -wemos D1 mini
     -DHT22 Temperature & Humidity Sensor
@@ -6,8 +7,15 @@
   This example is only supported on ESP8266.
   Originally Developed by mcbittech
 ***************************************************************************/
-//#define DEBUG                                 //USER DEBUG ON UART0
-//#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
+
+
+
+#define DEBUG                                 //USER DEBUG ON UART0
+#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
+
+
+
+
 
 #include "SoulissFramework.h"                 // Let the IDE point to the Souliss framework
 
@@ -39,10 +47,15 @@
 #include "constants.h"
 #include "language.h"
 #include "ntp.h"
+#include "display.h"
 #include <TimeLib.h>
 #include "read_save.h"
 #include "topics.h"
 #include <Arduino.h>
+
+#include "SoftwareSerial.h"
+SoftwareSerial serialDisplay(14, 12, false, 256);  //Pin 5 e 6 wemos for UART1
+
 
 //VARIABLE DEF
 //*************************************************************************
@@ -51,8 +64,11 @@
 DHT dht(DHTPIN, DHTTYPE);
 float temperature = 0;
 float humidity = 0;
+float temperatureprev = 0;
+int humidityprev = 0;
 float fValT = 0;
 float setpoint = 0;
+bool brefreshth = 0;
 
 int backLEDvalue = 0;
 int backLEDvalueHIGH = BRIGHT_MAX;
@@ -169,6 +185,7 @@ boolean getSoulissSystemState() {
 
 
 void getTemp() {
+  read_another_time:
   // Read temperature value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readTemperature();
   #ifdef DEBUGDEV
@@ -195,13 +212,22 @@ void getTemp() {
     bFlagBegin = true;
   }
 
-  if ( bFlagBegin) {
+  if (bFlagBegin) {
     //if DHT fail then try to reinit
     dht.begin();
+    bFlagBegin=false;
     #ifdef DEBUGDEV
       SERIAL_OUT.println(" dht.begin();");
+      SERIAL_OUT.println(" read another time");
     #endif
+    goto read_another_time;
+  }  
+  int humi = humidity;
+  if(temperatureprev!=temperature || humidityprev!=humi){
+    brefreshth=1;
   }
+  temperatureprev = temperature;
+  humidityprev = humi; 
 }
 
 
@@ -223,10 +249,10 @@ void bright(int lum) {
   #ifdef DEBUGDEV
     SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(val);
   #endif  
-  DISPLAY.print("dim=");DISPLAY.print(val);
-  DISPLAY.write(0xff);
-  DISPLAY.write(0xff);
-  DISPLAY.write(0xff); 
+  serialDisplay.print("dim=");serialDisplay.print(val);
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff); 
 
 }
 
@@ -235,10 +261,21 @@ void setup()
   #ifdef DEBUG || DEBUGDEV
     SERIAL_OUT.begin(115200);
   #endif
-  DISPLAY.begin(9600);
+  serialDisplay.begin(9600);
 
   //SPIFFS
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  serialDisplay.print("dim=");serialDisplay.print(1);
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);
+  serialDisplay.print("page 0");
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);
+
+
   SPIFFS.begin();
   File  sst_spiffs_verifica = SPIFFS.open("/sst_settings.json", "r");
   if (!sst_spiffs_verifica) {
@@ -289,7 +326,7 @@ void setup()
 
   //NTP
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
-  initNTP();
+  //initNTP();
   delay(1000);
   
 
@@ -302,6 +339,15 @@ void setup()
   #endif
   ArduinoOTA.setHostname((const char *)hostname.c_str());
   ArduinoOTA.begin();
+  yield();
+  
+  serialDisplay.print("page 1");
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);
+  serialDisplay.print("dim=");serialDisplay.print(100);
+  serialDisplay.write(0xff);
+  serialDisplay.write(0xff);serialDisplay.write(0xff);  
 
 }
 
@@ -313,26 +359,17 @@ EXECUTEFAST() {
 
   SHIFT_50ms(0) {
       //set point attuale
-      setpoint = Souliss_SinglePrecisionFloating(memory_map + MaCaco_OUT_s + SLOT_THERMOSTAT + 3);
+      //setpoint = Souliss_SinglePrecisionFloating(memory_map + MaCaco_OUT_s + SLOT_THERMOSTAT + 3);
       //Stampa il setpoint solo se il valore dell'encoder è diverso da quello impostato nel T31
       //TODO
   }
 
   SHIFT_50ms(3) {
-      Logic_T19(SLOT_BRIGHT_DISPLAY);
-      Logic_T11(SLOT_AWAY);
+      //Logic_T19(SLOT_BRIGHT_DISPLAY);
+      //Logic_T11(SLOT_AWAY);
   }
 
   SHIFT_110ms(0) {
-      //TODO
-  }
-
-
-  SHIFT_110ms(4) {
-      //TODO
-  }
-
-  SHIFT_210ms(0) {
       //FADE
       if (FADE == 0) {
         //Raggiunge il livello di luminosità minima, che può essere variata anche da SoulissApp
@@ -350,25 +387,34 @@ EXECUTEFAST() {
       }
   }
 
+
+  SHIFT_110ms(4) {
+      //TODO
+  }
+
+  SHIFT_210ms(0) {
+      //TODO
+  }
+
   SHIFT_210ms(2) {   // We process the logic and relevant input and output
-      Logic_Thermostat(SLOT_THERMOSTAT);
+      //Logic_Thermostat(SLOT_THERMOSTAT);
       // Start the heater and the fans
-      nDigOut(RELE, Souliss_T3n_HeatingOn, SLOT_THERMOSTAT);    // Heater
+      //nDigOut(RELE, Souliss_T3n_HeatingOn, SLOT_THERMOSTAT);    // Heater
 
       // We are not handling the cooling mode, if enabled by the user, force it back to disable
-      if (mOutput(SLOT_THERMOSTAT) & Souliss_T3n_CoolingOn){
-        mOutput(SLOT_THERMOSTAT) &= ~Souliss_T3n_CoolingOn;
-      }    
+      //if (mOutput(SLOT_THERMOSTAT) & Souliss_T3n_CoolingOn){
+        //mOutput(SLOT_THERMOSTAT) &= ~Souliss_T3n_CoolingOn;
+      //}    
   }
 
   FAST_510ms() {
       // Compare the acquired input with the stored one, send the new value to UI if the difference is greater than the deadband
-      Logic_T52(SLOT_TEMPERATURE);
-      Logic_T53(SLOT_HUMIDITY);
+      //Logic_T52(SLOT_TEMPERATURE);
+      //Logic_T53(SLOT_HUMIDITY);
   }
 
   FAST_710ms() {
-      //HOMESCREEN ////////////////////////////////////////////////////////////////
+     /* //HOMESCREEN ////////////////////////////////////////////////////////////////
         //EXIT MENU - Actions
         //write min bright on T19
         //memory_map[MaCaco_OUT_s + SLOT_BRIGHT_DISPLAY + 1] = getDisplayBright();
@@ -378,38 +424,38 @@ EXECUTEFAST() {
 
         //ON
         #ifdef DEBUGDEV
-          SERIAL_OUT.println("Set system ON ");
+          //SERIAL_OUT.println("Set system ON ");
         #endif
-          set_ThermostatModeOn(SLOT_THERMOSTAT);        // Set System On
+        //set_ThermostatModeOn(SLOT_THERMOSTAT);        // Set System On
 
         //OFF
         #ifdef DEBUGDEV
-          SERIAL_OUT.println("Set system OFF ");
+          //SERIAL_OUT.println("Set system OFF ");
         #endif
-        set_ThermostatOff(SLOT_THERMOSTAT);
+        //set_ThermostatOff(SLOT_THERMOSTAT);
         
         memory_map[MaCaco_IN_s + SLOT_THERMOSTAT] = Souliss_T3n_RstCmd;          // Reset
         // Trig the next change of the state
         setSoulissDataChanged();
         #ifdef DEBUGDEV
-          SERIAL_OUT.println("Init .....");
+          //SERIAL_OUT.println("Init .....");
         #endif
-      
+      */
   }
 
 
     SHIFT_210ms(3) {
 
         //if timeout read value of T19
-        backLEDvalueLOW =  memory_map[MaCaco_OUT_s + SLOT_BRIGHT_DISPLAY + 1];
-        FADE = 0;
+        //backLEDvalueLOW =  memory_map[MaCaco_OUT_s + SLOT_BRIGHT_DISPLAY + 1];
+        //FADE = 0;
         //HOMESCREEN ////////////////////////////////////////////////////////////////
 
       
     }
 
   SHIFT_910ms(1) {
-      subscribeTopics();
+      //subscribeTopics();
 
   }
 
@@ -423,14 +469,16 @@ EXECUTEFAST() {
 EXECUTESLOW() {
   UPDATESLOW();
 
-  SLOW_50s() {
-      getTemp(); 
-      //if (getCrono()) {
-      //  SERIAL_OUT.println("CRONO: aggiornamento");
-      //  setSetpoint(checkNTPcrono(ucg));
-      //  setEncoderValue(checkNTPcrono(ucg));
-      //  SERIAL_OUT.print("CRONO: setpoint: "); SERIAL_OUT.println(setpoint);
-      //}
+  SLOW_10s() {
+    getTemp(); 
+    //if statement for sending t & h
+    if(brefreshth){
+      #ifdef DEBUGDEV
+        SERIAL_OUT.println("sendTHdisplay ");
+      #endif
+      sendTHdisplay(serialDisplay,temperature,humidity);  
+      brefreshth=0;
+    }
   }
 
   SLOW_70s() {
@@ -440,9 +488,9 @@ EXECUTESLOW() {
 
   SLOW_15m() {
       //Sincronizzazione NTP
-      yield();
-      initNTP();
-      yield();
+      //yield();
+      //initNTP();
+      //yield();
   }
 
 

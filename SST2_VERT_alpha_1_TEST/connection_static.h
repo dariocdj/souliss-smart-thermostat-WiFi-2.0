@@ -14,6 +14,9 @@
     Modified by Dario Di Maio, original code from
        https://github.com/esp8266/Arduino
 ***************************************************************************/
+
+
+
 uint8_t static_ip_address[4]  = {STATIC_IP}; 
 uint8_t static_subnet_mask[4] = {STATIC_SUBNET};
 uint8_t static_ip_gateway[4]  = {STATIC_IP_GW}; 
