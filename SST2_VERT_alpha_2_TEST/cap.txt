@@ -1,0 +1,18 @@
+ACQ Temperature: 24.70
+ACQ Humidity: 52.40
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 7
+    (arrotonda(h))= 52
+ACQ Temperature: 24.70
+ACQ Humidity: 53.30
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 7
+    (arrotonda(h))= 53
+ACQ Temperature: 24.60
+ACQ Humidity: 53.20
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 6
+    (arrotonda(h))= 53
