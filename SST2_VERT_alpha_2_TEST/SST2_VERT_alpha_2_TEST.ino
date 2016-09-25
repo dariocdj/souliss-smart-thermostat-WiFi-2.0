@@ -22,7 +22,6 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
-//#include <EEPROM.h>
 #include "FS.h"                               //SPIFFS
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
@@ -45,18 +44,17 @@
 
 #include "Souliss.h"
 #include "constants.h"
+#include "display.h"
 #include "language.h"
 #include "ntp.h"
 #include "read_save.h"
 //#include "topics.h"
 #include <Arduino.h>
 #include <dummy.h>
-//#include "display.h"
+
 
 
 #include <SoftwareSerial.h>
-SoftwareSerial serialDisplay(14, 12, false, 256);  //Pin 5 e 6 wemos for UART1
-
 
 //VARIABLE DEF
 //*************************************************************************
@@ -93,19 +91,12 @@ boolean bFlagBegin = false;
 void setup()
 {
   SERIAL_OUT.begin(115200);
-  serialDisplay.begin(9600);
+  setupDisplay();
 
   //SPIFFS
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-  serialDisplay.print("dim=");serialDisplay.print(1);
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.print("page 0");
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
+  backlightDisplay(1);
+  page(0);
 
 
   SPIFFS.begin();
@@ -122,6 +113,7 @@ void setup()
     ReadAllSettingsFromSPIFFS();
   }
 
+  backlightDisplay(10);
 
   Initialize();               //Init Souliss Framework
 
@@ -143,7 +135,8 @@ void setup()
   Set_T19(SLOT_BRIGHT_DISPLAY);
   Set_T11(SLOT_AWAY);
 
-
+  backlightDisplay(1);
+  
   // Define output pins
   pinMode(RELE, OUTPUT);    // Heater
   dht.begin();
@@ -164,15 +157,10 @@ void setup()
   ArduinoOTA.setHostname((const char *)hostname.c_str());
   ArduinoOTA.begin();
   yield();
-  
-  serialDisplay.print("page 1");
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.print("dim=");serialDisplay.print(100);
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
+
+  backlightDisplay(10);
+  page(1);
+
 
 }
 
@@ -220,7 +208,7 @@ EXECUTESLOW() {
 
 
 void getTemp() {
-  //read_another_time:
+  read_another_time:
   // Read temperature value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readTemperature();
     SERIAL_OUT.print("ACQ Temperature: ");SERIAL_OUT.println(fValT);
@@ -246,29 +234,14 @@ void getTemp() {
     bFlagBegin=false;
       SERIAL_OUT.println(" dht.begin();");
       SERIAL_OUT.println(" read another time");
-    //goto read_another_time;
+    goto read_another_time;
   }  
   int humi = humidity;
   if(temperatureprev!=temperature || humidityprev!=humi){
-    brefreshth=1;
+    send_T_H_display(temperature,humidity);
   }
   temperatureprev = temperature;
   humidityprev = humi; 
-  serialDisplay.print("n0.val=");serialDisplay.print(arrotonda(temperature)); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff);  
-  serialDisplay.print("n1.val=");serialDisplay.print(dopovirgola(temperature)); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff);  
-  serialDisplay.print("n2.val=");serialDisplay.print(arrotonda(humidity)); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff);     
-    SERIAL_OUT.print("    (arrotonda(t))= ");SERIAL_OUT.println(arrotonda(temperature)); 
-    SERIAL_OUT.print("    (dopovirgola(t))= ");SERIAL_OUT.println(dopovirgola(temperature)); 
-    SERIAL_OUT.print("    (arrotonda(h))= ");SERIAL_OUT.println(arrotonda(humidity)); 
 }
 
 
@@ -277,25 +250,9 @@ void bright(int lum) {
   if (val > 100) val = 100;
   if (val < 0) val = 0;
     SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(val);
-  serialDisplay.print("dim=");serialDisplay.print(val);
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-  serialDisplay.write(0xff); 
-
+  backlightDisplay(val);
 }
 
-int arrotonda(float fI){ 
-  int iIrouded = fI;      
-  int result; 
-  return result = iIrouded; 
-} 
- 
-int dopovirgola(float fI){ 
-  int iIrouded = fI; 
-  float fIX10 = fI * 10;   
-  int iI = fIX10;          
-  int result; 
-  return result = fIX10 - (iIrouded*10); 
-} 
+
 
 

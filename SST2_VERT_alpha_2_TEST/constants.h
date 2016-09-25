@@ -12,6 +12,8 @@
 #include <Arduino.h>
 #include <dummy.h>
 #include <ESP8266WiFi.h>
+#include <SoftwareSerial.h>
+
 
 #define VERSION "1"
 #define HOSTNAME "SST2-Thermostat-OTA-" ///< Hostname. The setup function adds the Chip ID at the end.
@@ -68,4 +70,4 @@
 #define TEMP_MINUS 1
 
 #define SERIAL_OUT Serial
-//#define serialDisplay SoftwareSerial serialDisplay(14, 12, false, 256);  //Pin 5 e 6 wemos for UART1
+

@@ -13,11 +13,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include <Arduino.h>
 #include <dummy.h>
-#include "SoftwareSerial.h"
+#include <SoftwareSerial.h>
 
-
-void calcoloAndamento(float);
-void send_T_H_display(SoftwareSerial,float,float);
+void setupDisplay();
+void page(int);
+void send_T_H_display(float,float);
+void ackDisplay();
+void backlightDisplay(int);
 int arrotonda(float);
 int dopovirgola(float);
+
 
