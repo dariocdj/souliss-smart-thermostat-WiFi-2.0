@@ -112,25 +112,9 @@ String printDigits(int digits) {
   return s;
 }
 
-String digitalClockDisplay() {
-  // digital clock display of the time
-  return printDigits(hour()) + ":" + printDigits(minute()) + ":" + printDigits(second()) +  " " + day() + "/" + month() + "/" + year();
-}
-
-String digitalClockDisplay_simple() {
-  // digital clock display of the time
-  return printDigits(hour()) + ":" + printDigits(minute());
-}
-
-
-String digitalDataDisplay() {
-  // digital clock display of the time
-  return printDigits(day()) + "." + (month()) + "." + (year());
-}
-
-//Crono var
+//Display var
 //Day of week  Sunday is day 0 
-int getNTPday(){
+int getNTPweekday(){
   return weekday();  
 }
 //Hour of day
@@ -141,9 +125,21 @@ int getNTPhour(){
 int getNTPminute(){
   return minute();
 }
+//day number
+int getNTPday(){
+  return day();
+}
+//month number
+int getNTPmonth(){
+  return month();
+}
+//year number
+int getNTPyear(){
+  return year();
+}
+
 
 void initNTP() {
-
   udp_NTP.begin(localPort);
   SERIAL_OUT.println("waiting for sync");
   setSyncProvider(getNtpTime);

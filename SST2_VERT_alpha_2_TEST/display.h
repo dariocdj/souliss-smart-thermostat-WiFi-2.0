@@ -20,6 +20,8 @@ void page(int);
 void send_T_H_display(float,float);
 void ackDisplay();
 void backlightDisplay(int);
+void sendHour();
+void sendDate();
 int arrotonda(float);
 int dopovirgola(float);
 

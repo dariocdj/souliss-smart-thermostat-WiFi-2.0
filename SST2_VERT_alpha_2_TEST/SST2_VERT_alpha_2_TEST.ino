@@ -184,8 +184,12 @@ EXECUTESLOW() {
 
   SLOW_10s() {
     getTemp(); 
-    //if statement for sending t & h
+    sendHour();
+    sendDate();
+  }
 
+  SLOW_50s() {
+     
   }
 
   SLOW_15m() {
@@ -241,7 +245,7 @@ void getTemp() {
     send_T_H_display(temperature,humidity);
   }
   temperatureprev = temperature;
-  humidityprev = humi; 
+  humidityprev = humi;  
 }
 
 

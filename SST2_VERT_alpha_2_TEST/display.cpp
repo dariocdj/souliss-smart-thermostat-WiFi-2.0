@@ -11,8 +11,9 @@
  
 #include <Arduino.h> 
 #include <dummy.h> 
-#include "display.h" 
 #include "constants.h"
+#include "display.h" 
+#include "ntp.h"
 #include <SoftwareSerial.h>
  
 SoftwareSerial serialDisplay(14, 12, false, 256); 
@@ -39,6 +40,22 @@ void send_T_H_display(float t,float h){
     SERIAL_OUT.print("    (dopovirgola(t))= ");SERIAL_OUT.println(dopovirgola(t)); 
     SERIAL_OUT.print("    (arrotonda(h))= ");SERIAL_OUT.println(arrotonda(h)); 
 } 
+
+void sendHour(){
+  serialDisplay.print("n17.val=");serialDisplay.print(getNTPhour()); 
+  ackDisplay();
+  serialDisplay.print("n18.val=");serialDisplay.print(getNTPminute()); 
+  ackDisplay();  
+}
+
+void sendDate(){
+  serialDisplay.print("n14.val=");serialDisplay.print(getNTPday()); 
+  ackDisplay();
+  serialDisplay.print("n15.val=");serialDisplay.print(getNTPmonth()); 
+  ackDisplay();  
+  serialDisplay.print("n16.val=");serialDisplay.print(getNTPyear()-2000); 
+  ackDisplay(); 
+}
 
 void ackDisplay(){
   serialDisplay.write(0xff); 

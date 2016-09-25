@@ -17,13 +17,13 @@
 
 
 
-#define DYNAMIC_CONNECTION_Init()              /** Read the IP configuration from the EEPROM, if not available start the node as access point */ \
+#define DYNAMIC_CONNECTION_Init() \             /** Read the IP configuration from the EEPROM, if not available start the node as access point */ 
   SERIAL_OUT.println("start DYNAMIC_CONNECTION_Init"); \
   if (!ReadIPConfiguration()) \
   { \
     /** Start the node as access point with a configuration WebServer */ \
-    SetAccessPoint();\
-    startWebServer();\
+    SetAccessPoint(); \
+    startWebServer(); \
     SERIAL_OUT.println("display_print_splash_waiting_need_configuration"); \
     /** We have nothing more than the WebServer for the configuration */ \
     /** to run, once configured the node will quit this. */ \
@@ -33,7 +33,7 @@
       runWebServer(); \
     } \
   } \
-  if (IsRuntimeGateway())  \
+  if (IsRuntimeGateway()) \
   { \
     SERIAL_OUT.println("display_print_splash_waiting_connection_gateway"); \
     /** Connect to the WiFi network and get an address from DHCP*/ \
@@ -51,14 +51,14 @@
   } \
 
 #define DYNAMIC_CONNECTION_fast()      /** Run communication as Gateway or Peer */ \
-  if (IsRuntimeGateway())   \
-    FAST_GatewayComms();    \
-  else                      \
-    FAST_PeerComms();       \
+  if (IsRuntimeGateway()) \
+    FAST_GatewayComms(); \
+  else \
+    FAST_PeerComms(); \
   
 
-#define DYNAMIC_CONNECTION_slow()      /** Run communication as Peer */ \
+#define DYNAMIC_CONNECTION_slow() \     /** Run communication as Peer */ 
   /** If running as Peer */ \
   if (!IsRuntimeGateway()) {  \
   SLOW_PeerJoin(); \
-    }\
+    } \

@@ -25,5 +25,7 @@ String printDigits(int);
 int getNTPday();
 int getNTPhour();
 int getNTPminute();
-
+int getNTPday();
+int getNTPmonth();
+int getNTPyear();
 void initNTP();
