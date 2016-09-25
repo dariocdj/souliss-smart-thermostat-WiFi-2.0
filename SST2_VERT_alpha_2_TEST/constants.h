@@ -9,7 +9,7 @@
 ***************************************************************************/
 
 
-//#include <Arduino.h>
+#include <Arduino.h>
 #include <dummy.h>
 #include <ESP8266WiFi.h>
 
@@ -30,9 +30,9 @@
 
 
 //
-#define BRIGHT_MAX 100            //%
-#define BRIGHT_MIN_DEFAULT 15     //%
-#define BRIGHT_STEP_FADE_IN 20    //%
+#define BRIGHT_MAX 100           //%
+#define BRIGHT_MIN_DEFAULT 1     //%
+#define BRIGHT_STEP_FADE_IN 5    //%
 #define BRIGHT_STEP_FADE_OUT 1
 
 

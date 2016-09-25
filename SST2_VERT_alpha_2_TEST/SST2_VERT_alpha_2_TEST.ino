@@ -10,8 +10,8 @@
 
 
 
-#define DEBUG                                 //USER DEBUG ON UART0
-#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
+//#define DEBUG                                 //USER DEBUG ON UART0
+//#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
 
 
 
@@ -22,8 +22,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
-#include <EEPROM.h>
-#include "FS.h" //SPIFFS
+//#include <EEPROM.h>
+#include "FS.h"                               //SPIFFS
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 #include <DHT.h>
@@ -47,15 +47,14 @@
 #include "constants.h"
 #include "language.h"
 #include "ntp.h"
-#include "display.h"
-#include <TimeLib.h>
 #include "read_save.h"
-#include "topics.h"
-//#include <Arduino.h>
+//#include "topics.h"
+#include <Arduino.h>
 #include <dummy.h>
+//#include "display.h"
 
 
-#include "SoftwareSerial.h"
+#include <SoftwareSerial.h>
 SoftwareSerial serialDisplay(14, 12, false, 256);  //Pin 5 e 6 wemos for UART1
 
 
@@ -91,99 +90,32 @@ boolean bFlagBegin = false;
 
 
 
-
-void getTemp() {
-  read_another_time:
-  // Read temperature value from DHT sensor and convert from single-precision to half-precision
-  fValT = dht.readTemperature();
-  #ifdef DEBUGDEV
-    SERIAL_OUT.print("ACQ Temperature: "); SERIAL_OUT.println(fValT);
-  #endif  
-  if (!isnan(fValT)) {
-    temperature = fValT; //memorizza temperatura se non è Not A Number
-    //Import temperature into T31 Thermostat
-    ImportAnalog(SLOT_THERMOSTAT + 1, &temperature);
-    ImportAnalog(SLOT_TEMPERATURE, &temperature);
-  } else {
-    bFlagBegin = true;
-  }
-
-  // Read humidity value from DHT sensor and convert from single-precision to half-precision
-  fValT = dht.readHumidity();
-  #ifdef DEBUG
-    SERIAL_OUT.print("ACQ Humidity: "); SERIAL_OUT.println(fValT);
-  #endif
-  if (!isnan(fValT)) {
-    humidity = fValT;
-    ImportAnalog(SLOT_HUMIDITY, &humidity);
-  } else {
-    bFlagBegin = true;
-  }
-
-  if (bFlagBegin) {
-    //if DHT fail then try to reinit
-    dht.begin();
-    bFlagBegin=false;
-    #ifdef DEBUGDEV
-      SERIAL_OUT.println(" dht.begin();");
-      SERIAL_OUT.println(" read another time");
-    #endif
-    goto read_another_time;
-  }  
-  int humi = humidity;
-  if(temperatureprev!=temperature || humidityprev!=humi){
-    brefreshth=1;
-  }
-  temperatureprev = temperature;
-  humidityprev = humi; 
-}
-
-
-void bright(int lum) {
-  int val = ((float)lum);
-  if (val > 100) val = 100;
-  if (val < 0) val = 0;
-  #ifdef DEBUGDEV
-    SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(val);
-  #endif  
-  serialDisplay.print("dim=");serialDisplay.print(val);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff); 
-
-}
-
 void setup()
 {
-  #ifdef DEBUG || DEBUGDEV
-    SERIAL_OUT.begin(115200);
-  #endif
+  SERIAL_OUT.begin(115200);
   serialDisplay.begin(9600);
 
   //SPIFFS
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   serialDisplay.print("dim=");serialDisplay.print(1);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
   serialDisplay.print("page 0");
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
 
 
   SPIFFS.begin();
   File  sst_spiffs_verifica = SPIFFS.open("/sst_settings.json", "r");
   if (!sst_spiffs_verifica) {
-    #ifdef DEBUGDEV
-      SERIAL_OUT.println(" ");
       SERIAL_OUT.println("Non riesco a leggere sst_settings.json! formatto la SPIFFS...");
       SPIFFS.format();
       SERIAL_OUT.println("Spiffs formatted");
       ReadAllSettingsFromPreferences();
       //ReadCronoMatrixSPIFFS();
-    #endif  
   }
   else
   {
@@ -219,10 +151,9 @@ void setup()
 
   //NTP
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //initNTP();
+  initNTP();
   delay(1000);
   
-
   // Init the OTA
   // Set Hostname.
   String hostname(HOSTNAME);
@@ -235,13 +166,13 @@ void setup()
   yield();
   
   serialDisplay.print("page 1");
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
   serialDisplay.print("dim=");serialDisplay.print(100);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);
-  serialDisplay.write(0xff);  
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
 
 }
 
@@ -251,67 +182,13 @@ EXECUTEFAST() {
 
   UPDATEFAST();
 
-  SHIFT_50ms(0) {
-
-  }
-
-  SHIFT_50ms(3) {
-    
-  }
-
-  SHIFT_110ms(0) {
-      //FADE
-      if (FADE == 0) {
-        //Raggiunge il livello di luminosità minima, che può essere variata anche da SoulissApp
-        if ( backLEDvalue != backLEDvalueLOW) {
-          if ( backLEDvalue > backLEDvalueLOW) {
-            backLEDvalue -= BRIGHT_STEP_FADE_OUT;
-          } else {
-            backLEDvalue += BRIGHT_STEP_FADE_OUT;
-          }
-          bright(backLEDvalue);
-        }
-      } else  if (FADE == 1 && backLEDvalue < backLEDvalueHIGH) {
-        backLEDvalue +=  BRIGHT_STEP_FADE_IN;
-        bright(backLEDvalue);
-      }
-  }
-
-
-  SHIFT_110ms(4) {
-      //TODO
-  }
-
-  SHIFT_210ms(0) {
-      //TODO
-  }
-
-  SHIFT_210ms(2) {   
-       
-  }
-
-  FAST_510ms() {
-    
-  }
-
-  FAST_710ms() {
-    
-  }
-
-
-    SHIFT_210ms(3) {
-      
-    }
-
-  SHIFT_910ms(1) {
-    
-  }
 
   #if(DYNAMIC_CONNECTION)
     DYNAMIC_CONNECTION_fast();
   #else
     STATIC_CONNECTION_fast();
   #endif
+
 }
 
 EXECUTESLOW() {
@@ -320,25 +197,12 @@ EXECUTESLOW() {
   SLOW_10s() {
     getTemp(); 
     //if statement for sending t & h
-    if(brefreshth){
-      #ifdef DEBUGDEV
-        SERIAL_OUT.println("sendTHdisplay ");
-      #endif
-      sendTHdisplay(serialDisplay,temperature,humidity);  
-      brefreshth=0;
-    }
-  }
 
-  SLOW_70s() {
-    //TODO
   }
-
 
   SLOW_15m() {
       //Sincronizzazione NTP
-      yield();
       initNTP();
-      yield();
   }
 
 
@@ -347,10 +211,91 @@ EXECUTESLOW() {
   #endif
 
   }
-
   // Look for a new sketch to update over the air
   ArduinoOTA.handle();
   yield();
 }
+
+
+
+
+void getTemp() {
+  //read_another_time:
+  // Read temperature value from DHT sensor and convert from single-precision to half-precision
+  fValT = dht.readTemperature();
+    SERIAL_OUT.print("ACQ Temperature: ");SERIAL_OUT.println(fValT);
+  if (!isnan(fValT)) {
+    temperature = fValT; //memorizza temperatura se non è Not A Number
+    //Import temperature into T31 Thermostat
+  } else {
+    bFlagBegin = true;
+  }
+
+  // Read humidity value from DHT sensor and convert from single-precision to half-precision
+  fValT = dht.readHumidity();
+    SERIAL_OUT.print("ACQ Humidity: ");SERIAL_OUT.println(fValT);
+  if (!isnan(fValT)) {
+    humidity = fValT;
+  } else {
+    bFlagBegin = true;
+  }
+
+  if (bFlagBegin) {
+    //if DHT fail then try to reinit
+    dht.begin();
+    bFlagBegin=false;
+      SERIAL_OUT.println(" dht.begin();");
+      SERIAL_OUT.println(" read another time");
+    //goto read_another_time;
+  }  
+  int humi = humidity;
+  if(temperatureprev!=temperature || humidityprev!=humi){
+    brefreshth=1;
+  }
+  temperatureprev = temperature;
+  humidityprev = humi; 
+  serialDisplay.print("n0.val=");serialDisplay.print(arrotonda(temperature)); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff);  
+  serialDisplay.print("n1.val=");serialDisplay.print(dopovirgola(temperature)); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff);  
+  serialDisplay.print("n2.val=");serialDisplay.print(arrotonda(humidity)); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff);     
+    SERIAL_OUT.print("    (arrotonda(t))= ");SERIAL_OUT.println(arrotonda(temperature)); 
+    SERIAL_OUT.print("    (dopovirgola(t))= ");SERIAL_OUT.println(dopovirgola(temperature)); 
+    SERIAL_OUT.print("    (arrotonda(h))= ");SERIAL_OUT.println(arrotonda(humidity)); 
+}
+
+
+void bright(int lum) {
+  int val = ((float)lum);
+  if (val > 100) val = 100;
+  if (val < 0) val = 0;
+    SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(val);
+  serialDisplay.print("dim=");serialDisplay.print(val);
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+  serialDisplay.write(0xff); 
+
+}
+
+int arrotonda(float fI){ 
+  int iIrouded = fI;      
+  int result; 
+  return result = iIrouded; 
+} 
+ 
+int dopovirgola(float fI){ 
+  int iIrouded = fI; 
+  float fIX10 = fI * 10;   
+  int iI = fIX10;          
+  int result; 
+  return result = fIX10 - (iIrouded*10); 
+} 
 
 

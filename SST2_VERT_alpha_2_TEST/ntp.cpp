@@ -9,7 +9,7 @@
 ***************************************************************************/
 
 
-//#include <Arduino.h>
+#include <Arduino.h>
 #include <dummy.h>
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
@@ -144,7 +144,7 @@ int getNTPminute(){
 void initNTP() {
 
   udp_NTP.begin(localPort);
-  SERIAL_OUT.print("waiting for sync");
+  SERIAL_OUT.println("waiting for sync");
   setSyncProvider(getNtpTime);
 }
 

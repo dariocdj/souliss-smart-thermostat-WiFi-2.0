@@ -1,18 +1,588 @@
-ACQ Temperature: 24.70
-ACQ Humidity: 52.40
+set OTA hostname: SST2-Thermostat-OTA-660b6
+ACQ Temperature: 26.80
+ACQ Humidity: 49.80
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 49
+display bright= 20
+display bright= 40
+display bright= 60
+display bright= 80
+display bright= 100
+ACQ Temperature: 24.00
+ACQ Humidity: 58.40
 sendTHdisplay 
     (arrotonda(t))= 24
-    (dopovirgola(t))= 7
-    (arrotonda(h))= 52
-ACQ Temperature: 24.70
-ACQ Humidity: 53.30
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 58
+ACQ Temperature: 24.00
+ACQ Humidity: 58.10
+ACQ Temperature: 24.00
+ACQ Humidity: 57.60
 sendTHdisplay 
     (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 57
+ACQ Temperature: 23.90
+ACQ Humidity: 57.80
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 57
+ACQ Temperature: 24.00
+ACQ Humidity: 57.60
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 57
+ACQ Temperature: 24.00
+ACQ Humidity: 57.50
+ACQ Temperature: 24.00
+ACQ Humidity: 58.70
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 58
+ACQ Temperature: 24.10
+ACQ Humidity: 92.60
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 1
+    (arrotonda(h))= 92
+ACQ Temperature: 25.10
+ACQ Humidity: 98.10
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 1
+    (arrotonda(h))= 98
+ACQ Temperature: 25.90
+ACQ Humidity: 59.30
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 59
+ACQ Temperature: 26.00
+ACQ Humidity: 54.50
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 54
+ACQ Temperature: 25.90
+ACQ Humidity: 53.70
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 53
+ACQ Temperature: 25.80
+ACQ Humidity: 53.50
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 53
+ACQ Temperature: 25.70
+ACQ Humidity: 53.70
+sendTHdisplay 
+    (arrotonda(t))= 25
     (dopovirgola(t))= 7
     (arrotonda(h))= 53
+ACQ Temperature: 25.60
+ACQ Humidity: 53.70
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 6
+    (arrotonda(h))= 53
+ACQ Temperature: 25.40
+ACQ Humidity: 53.70
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 4
+    (arrotonda(h))= 53
+ACQ Temperature: 25.30
+ACQ Humidity: 53.90
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 3
+    (arrotonda(h))= 53
+ACQ Temperature: 25.20
+ACQ Humidity: 54.10
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 2
+    (arrotonda(h))= 54
+ACQ Temperature: 25.20
+ACQ Humidity: 54.40
+ACQ Temperature: 25.10
+ACQ Humidity: 54.50
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 1
+    (arrotonda(h))= 54
+ACQ Temperature: 25.00
+ACQ Humidity: 54.60
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 54
+ACQ Temperature: 24.90
+ACQ Humidity: 54.80
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 54
+ACQ Temperature: 24.90
+ACQ Humidity: 56.20
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 56
+ACQ Temperature: 24.80
+ACQ Humidity: 55.00
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 55
+ACQ Temperature: 24.70
+ACQ Humidity: 55.10
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 7
+    (arrotonda(h))= 55
+ACQ Temperature: 24.70
+ACQ Humidity: 55.30
+ACQ Temperature: 24.70
+ACQ Humidity: 55.40
 ACQ Temperature: 24.60
-ACQ Humidity: 53.20
+ACQ Humidity: 55.50
 sendTHdisplay 
     (arrotonda(t))= 24
     (dopovirgola(t))= 6
+    (arrotonda(h))= 55
+ACQ Temperature: 24.60
+ACQ Humidity: 55.60
+ACQ Temperature: 24.50
+ACQ Humidity: 55.70
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 5
+    (arrotonda(h))= 55
+ACQ Temperature: 24.50
+ACQ Humidity: 55.80
+ACQ Temperature: 24.40
+ACQ Humidity: 55.70
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 4
+    (arrotonda(h))= 55
+ACQ Temperature: 24.40
+ACQ Humidity: 55.90
+ACQ Temperature: 24.40
+ACQ Humidity: 56.00
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 4
+    (arrotonda(h))= 56
+ACQ Temperature: 24.40
+ACQ Humidity: 56.10
+ACQ Temperature: 24.30
+ACQ Humidity: 56.20
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 3
+    (arrotonda(h))= 56
+ACQ Temperature: 24.30
+ACQ Humidity: 56.20
+ACQ Temperature: 24.30
+ACQ Humidity: 56.30
+ACQ Temperature: 24.30
+ACQ Humidity: 56.30
+ACQ Temperature: 24.20
+ACQ Humidity: 56.30
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 2
+    (arrotonda(h))= 56
+ACQ Temperature: 24.20
+ACQ Humidity: 56.40
+ACQ Temperature: 24.20
+ACQ Humidity: 56.50
+ACQ Temperature: 24.20
+ACQ Humidity: 56.50
+ACQ Temperature: 24.20
+ACQ Humidity: 56.60
+ACQ Temperature: 24.20
+ACQ Humidity: 56.70
+ACQ Temperature: 24.20
+ACQ Humidity: 57.90
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 2
+    (arrotonda(h))= 57
+ACQ Temperature: 24.10
+ACQ Humidity: 56.70
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 1
+    (arrotonda(h))= 56
+ACQ Temperature: 24.10
+ACQ Humidity: 56.80
+ACQ Temperature: 24.10
+ACQ Humidity: 56.80
+ACQ Temperature: 24.10
+ACQ Humidity: 56.90
+ACQ Temperature: 24.00
+ACQ Humidity: 56.90
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 56
+ACQ Temperature: 24.00
+ACQ Humidity: 56.90
+ACQ Temperature: 24.00
+ACQ Humidity: 57.00
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 57
+ACQ Temperature: 24.00
+ACQ Humidity: 56.90
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 56
+ACQ Temperature: 24.00
+ACQ Humidity: 56.10
+ACQ Temperature: 24.00
+ACQ Humidity: 57.10
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 57
+ACQ Temperature: 24.00
+ACQ Humidity: 57.10
+ACQ Temperature: 24.00
+ACQ Humidity: 57.10
+ACQ Temperature: 24.00
+ACQ Humidity: 57.20
+ACQ Temperature: 24.00
+ACQ Humidity: 57.30
+ACQ Temperature: 24.00
+ACQ Humidity: 57.30
+ACQ Temperature: 24.00
+ACQ Humidity: 57.40
+ACQ Temperature: 24.00
+ACQ Humidity: 57.40
+ACQ Temperature: 24.00
+ACQ Humidity: 57.50
+ACQ Temperature: 24.00
+ACQ Humidity: 57.50
+ACQ Temperature: 24.00
+ACQ Humidity: 57.40
+ACQ Temperature: 23.90
+ACQ Humidity: 57.40
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 57
+ACQ Temperature: 23.90
+ACQ Humidity: 58.50
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 58
+ACQ Temperature: 23.90
+ACQ Humidity: 57.50
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 57
+ACQ Temperature: 24.00
+ACQ Humidity: 57.50
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 57
+ACQ Temperature: 23.90
+ACQ Humidity: 57.50
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 57
+ACQ Temperature: 23.90
+ACQ Humidity: 57.50
+ACQ Temperature: 23.90
+ACQ Humidity: 57.60
+ACQ Temperature: 23.90
+ACQ Humidity: 57.60
+ACQ Temperature: 23.90
+ACQ Humidity: 57.70
+ACQ Temperature: 23.90
+ACQ Humidity: 57.60
+ACQ Temperature: 23.90
+ACQ Humidity: 57.50
+ACQ Temperature: 23.90
+ACQ Humidity: 57.50
+ACQ Temperature: 23.90
+ACQ Humidity: 57.60
+ACQ Temperature: 23.90
+ACQ Humidity: 57.60
+ACQ Temperature: 23.90
+ACQ Humidity: 57.70
+ACQ Temperature: 23.90
+ACQ Humidity: 57.80
+ACQ Temperature: 23.90
+ACQ Humidity: 57.60
+ACQ Temperature: 23.90
+ACQ Humidity: 58.00
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 58
+ACQ Temperature: 23.90
+ACQ Humidity: 58.00
+ACQ Temperature: 23.90
+ACQ Humidity: 58.50
+ACQ Temperature: 23.90
+ACQ Humidity: 58.10
+ACQ Temperature: 23.90
+ACQ Humidity: 58.40
+ACQ Temperature: 23.90
+ACQ Humidity: 58.50
+ACQ Temperature: 23.90
+ACQ Humidity: 58.60
+ACQ Temperature: 23.90
+ACQ Humidity: 58.60
+ACQ Temperature: 23.90
+ACQ Humidity: 58.60
+ACQ Temperature: 23.90
+ACQ Humidity: 58.60
+ACQ Temperature: 23.90
+ACQ Humidity: 58.60
+ACQ Temperature: 23.90
+ACQ Humidity: 58.60
+ACQ Temperature: 23.90
+ACQ Humidity: 58.40
+ACQ Temperature: 23.90
+ACQ Humidity: 58.10
+ACQ Temperature: 23.90
+ACQ Humidity: 58.10
+ACQ Temperature: 23.90
+ACQ Humidity: 58.10
+ACQ Temperature: 23.90
+ACQ Humidity: 58.00
+ACQ Temperature: 23.90
+ACQ Humidity: 58.00
+ACQ Temperature: 23.90
+ACQ Humidity: 58.00
+ACQ Temperature: 23.90
+ACQ Humidity: 58.10
+ACQ Temperature: 23.90
+ACQ Humidity: 57.80
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 57
+ACQ Temperature: 23.90
+ACQ Humidity: 57.90
+ACQ Temperature: 23.90
+ACQ Humidity: 58.10
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 58
+ACQ Temperature: 23.90
+ACQ Humidity: 58.00
+ACQ Temperature: 23.90
+ACQ Humidity: 57.90
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 57
+ACQ Temperature: 23.90
+ACQ Humidity: 57.90
+ACQ Temperature: 23.90
+ACQ Humidity: 57.90
+ACQ Temperature: 23.90
+ACQ Humidity: 57.80
+ACQ Temperature: 23.80
+ACQ Humidity: 57.90
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 57
+ACQ Temperature: 23.80
+ACQ Humidity: 57.90
+ACQ Temperature: 23.90
+ACQ Humidity: 57.90
+sendTHdisplay 
+    (arrotonda(t))= 23
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 57
+ACQ Temperature: 25.00
+ACQ Humidity: 99.90
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 99
+ACQ Temperature: 26.80
+ACQ Humidity: 72.20
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 72
+ACQ Temperature: 27.10
+ACQ Humidity: 53.00
+sendTHdisplay 
+    (arrotonda(t))= 27
+    (dopovirgola(t))= 1
     (arrotonda(h))= 53
+ACQ Temperature: 27.00
+ACQ Humidity: 51.60
+sendTHdisplay 
+    (arrotonda(t))= 27
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 51
+ACQ Temperature: 26.90
+ACQ Humidity: 51.50
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 51
+ACQ Temperature: 26.60
+ACQ Humidity: 51.40
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 6
+    (arrotonda(h))= 51
+ACQ Temperature: 26.40
+ACQ Humidity: 51.50
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 4
+    (arrotonda(h))= 51
+ACQ Temperature: 26.20
+ACQ Humidity: 52.20
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 2
+    (arrotonda(h))= 52
+ACQ Temperature: 26.10
+ACQ Humidity: 53.20
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 1
+    (arrotonda(h))= 53
+ACQ Temperature: 26.00
+ACQ Humidity: 53.40
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 53
+ACQ Temperature: 25.80
+ACQ Humidity: 53.10
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 53
+ACQ Temperature: 25.60
+ACQ Humidity: 53.10
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 6
+    (arrotonda(h))= 53
+ACQ Temperature: 25.60
+ACQ Humidity: 53.30
+ACQ Temperature: 25.40
+ACQ Humidity: 53.50
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 4
+    (arrotonda(h))= 53
+ACQ Temperature: 25.30
+ACQ Humidity: 54.90
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 3
+    (arrotonda(h))= 54
+ACQ Temperature: 25.20
+ACQ Humidity: 53.90
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 2
+    (arrotonda(h))= 53
+ACQ Temperature: 25.10
+ACQ Humidity: 54.00
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 1
+    (arrotonda(h))= 54
+ACQ Temperature: 25.00
+ACQ Humidity: 54.20
+sendTHdisplay 
+    (arrotonda(t))= 25
+    (dopovirgola(t))= 0
+    (arrotonda(h))= 54
+ACQ Temperature: 25.00
+ACQ Humidity: 54.40
+ACQ Temperature: 24.90
+ACQ Humidity: 54.60
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 54
+ACQ Temperature: 24.90
+ACQ Humidity: 54.80
+ACQ Temperature: 24.80
+ACQ Humidity: 54.80
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 54
+ACQ Temperature: 24.80
+ACQ Humidity: 55.00
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 8
+    (arrotonda(h))= 55
+ACQ Temperature: 24.70
+ACQ Humidity: 55.10
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 7
+    (arrotonda(h))= 55
+ACQ Temperature: 24.70
+ACQ Humidity: 55.20
+ACQ Temperature: 24.60
+ACQ Humidity: 55.30
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 6
+    (arrotonda(h))= 55
+ACQ Temperature: 24.60
+ACQ Humidity: 55.40
+ACQ Temperature: 24.60
+ACQ Humidity: 55.70
+ACQ Temperature: 24.50
+ACQ Humidity: 55.70
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 5
+    (arrotonda(h))= 55
+ACQ Temperature: 24.50
+ACQ Humidity: 56.00
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 5
+    (arrotonda(h))= 56
+ACQ Temperature: 24.90
+ACQ Humidity: 99.90
+sendTHdisplay 
+    (arrotonda(t))= 24
+    (dopovirgola(t))= 9
+    (arrotonda(h))= 99
+ACQ Temperature: 26.50
+ACQ Humidity: 99.90
+sendTHdisplay 
+    (arrotonda(t))= 26
+    (dopovirgola(t))= 5
+    (arrotonda(h))= 99
