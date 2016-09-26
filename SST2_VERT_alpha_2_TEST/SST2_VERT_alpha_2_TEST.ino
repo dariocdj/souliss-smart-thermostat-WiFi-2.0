@@ -145,7 +145,7 @@ void setup()
   //NTP
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
   initNTP();
-  delay(1000);
+  delay(2000);
   
   // Init the OTA
   // Set Hostname.
@@ -160,8 +160,9 @@ void setup()
 
   backlightDisplay(10);
   page(1);
-
-
+  getTemp(); 
+  sendHour();
+  sendDate();
 }
 
 void loop() {       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,19 +185,20 @@ EXECUTESLOW() {
 
   SLOW_10s() {
     getTemp(); 
-    sendHour();
-    sendDate();
   }
 
   SLOW_50s() {
-     
+    sendHour();
   }
 
   SLOW_15m() {
       //Sincronizzazione NTP
       initNTP();
   }
-
+  
+  SLOW_4h() {
+    sendDate();
+  }
 
   #if(DYNAMIC_CONNECTION==1)
     DYNAMIC_CONNECTION_slow();
@@ -242,6 +244,8 @@ void getTemp() {
   }  
   int humi = humidity;
   if(temperatureprev!=temperature || humidityprev!=humi){
+    Serial.print("    update T&H on: ");Serial.print(getNTPday());Serial.print(".");Serial.print(getNTPmonth());Serial.print(".");Serial.print(getNTPyear());Serial.print(" @ ");
+    Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
     send_T_H_display(temperature,humidity);
   }
   temperatureprev = temperature;
