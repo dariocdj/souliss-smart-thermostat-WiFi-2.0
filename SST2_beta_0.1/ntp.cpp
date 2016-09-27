@@ -104,6 +104,7 @@ time_t getNtpTime()
     SERIAL_OUT.println("No NTP Response :-(");
   #endif
   return 0; // return 0 if unable to get the time
+  goto reinit_NTP;
 }
 
 
