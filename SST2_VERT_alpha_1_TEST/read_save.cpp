@@ -15,7 +15,7 @@
 #include "preferences.h"
 #include "read_save.h"
 #include "FS.h"
-#include <ArduinoJson.h>
+//#include <ArduinoJson.h>
 
 boolean bClock;
 boolean bSystem;
