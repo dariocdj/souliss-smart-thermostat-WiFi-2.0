@@ -18,11 +18,27 @@
  
 SoftwareSerial serialDisplay(14, 12, false, 256); 
 
+
+
 void setupDisplay(){
   serialDisplay.begin(9600);
 }
 
 
+void cursore(int cursorvalue){
+  serialDisplay.print("h0.val=");serialDisplay.print(cursorvalue);
+  ackDisplay(); 
+}
+
+void bclockON(){
+  serialDisplay.print("vis p0,1");
+  ackDisplay(); 
+}
+
+void bclockOFF(){
+  serialDisplay.print("vis p0,0");
+  ackDisplay(); 
+}
 
 void page(int n){
   serialDisplay.print("page ");serialDisplay.print(n);

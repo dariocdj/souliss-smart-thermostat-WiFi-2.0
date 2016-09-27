@@ -22,6 +22,9 @@ void ackDisplay();
 void backlightDisplay(int);
 void sendHour();
 void sendDate();
+void bclockON();
+void bclockOFF();
+void cursore(int);
 int arrotonda(float);
 int dopovirgola(float);
 

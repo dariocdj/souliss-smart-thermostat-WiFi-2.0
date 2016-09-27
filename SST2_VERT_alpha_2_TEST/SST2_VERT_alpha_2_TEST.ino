@@ -85,7 +85,8 @@ float fTopic_A6_Output;
 boolean bChildLock = false;
 boolean T_or_H_isNan = false;
 boolean bFlagBegin = false;
-
+boolean b=0;
+int cursorval=0;
 
 
 void setup()
@@ -171,6 +172,20 @@ EXECUTEFAST() {
 
   UPDATEFAST();
 
+  FAST_50ms() {
+    
+  }
+  
+  SHIFT_210ms(0) {
+    if(b==0){
+      bclockON();
+      b=1;      
+    }else{
+      bclockOFF();
+      b=0;     
+    }
+     //TODO
+  }
 
   #if(DYNAMIC_CONNECTION)
     DYNAMIC_CONNECTION_fast();
@@ -207,7 +222,12 @@ EXECUTESLOW() {
   }
   // Look for a new sketch to update over the air
   ArduinoOTA.handle();
-  yield();
+  yield();    
+  cursore(cursorval);
+  if(cursorval>99){
+    cursorval=0;
+  }
+  ++cursorval;
 }
 
 
