@@ -91,7 +91,6 @@ int arrotonda(float fI){
 int dopovirgola(float fI){ 
   int iIrouded = fI; 
   float fIX10 = fI * 10;   
-  int iI = fIX10;          
   int result; 
   return result = fIX10 - (iIrouded*10); 
 } 

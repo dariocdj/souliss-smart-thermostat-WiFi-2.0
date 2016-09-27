@@ -58,6 +58,7 @@ void sendNTPpacket(IPAddress &address)
 
 time_t getNtpTime()
 {
+  reinit_NTP:
   while (udp_NTP.parsePacket() > 0) ; // discard any previously received packets
   #ifdef DEBUG
     SERIAL_OUT.println("Transmit NTP Request");
@@ -70,6 +71,7 @@ time_t getNtpTime()
       #ifdef DEBUG
         SERIAL_OUT.println("Receive NTP Response");
       #endif
+	  
       udp_NTP.read(packetBuffer, NTP_PACKET_SIZE);  // read packet into the buffer
       unsigned long secsSince1900;
       // convert four bytes starting at location 40 to a long integer
@@ -77,7 +79,6 @@ time_t getNtpTime()
       secsSince1900 |= (unsigned long)packetBuffer[41] << 16;
       secsSince1900 |= (unsigned long)packetBuffer[42] << 8;
       secsSince1900 |= (unsigned long)packetBuffer[43];
-      //return secsSince1900 - 2208988800UL + read_eeprom_byte(9) * SECS_PER_HOUR;
       int tZonetemp =read_spiffs_prefs("Tzone");
       int tDayLighttemp = read_spiffs_prefs("DayLightSavingTime");
 
@@ -92,13 +93,17 @@ time_t getNtpTime()
         #endif
         return secsSince1900 - 2208988800UL + (tZonetemp + 1) * SECS_PER_HOUR;
         } 
-    }
+    } else {
+		SERIAL_OUT.println("NTP failed, try to reinit ");
+		goto reinit_NTP;
+	}	
   }
   #ifdef DEBUG
     SERIAL_OUT.println("No NTP Response :-(");
   #endif
   return 0; // return 0 if unable to get the time
 }
+
 
 
 

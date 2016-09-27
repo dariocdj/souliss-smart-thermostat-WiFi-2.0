@@ -10,10 +10,9 @@
 
 
 
-//#define DEBUG                                 //USER DEBUG ON UART0
+#define DEBUG                                 //USER DEBUG ON UART0
 //#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
 
-#define VM_DEBUG
 
 
 
@@ -147,6 +146,7 @@ void setup()
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
   initNTP();
   delay(2000);
+
   
   // Init the OTA
   // Set Hostname.
