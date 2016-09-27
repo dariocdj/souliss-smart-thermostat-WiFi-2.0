@@ -18,7 +18,7 @@
    inkscape:version="0.91 r13725"
    viewBox="0 0 240 320"
    sodipodi:docname="layout2_VER.svg"
-   inkscape:export-filename="C:\Users\flavio\Documents\souliss-smart-thermostat-WiFi-2.0\layout_VER_black.png"
+   inkscape:export-filename="C:\Users\flavio\Documents\souliss-smart-thermostat-WiFi-2.0\comunica.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -53,8 +53,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.767767"
-     inkscape:cx="58.01088"
-     inkscape:cy="156.55649"
+     inkscape:cx="-24.862033"
+     inkscape:cy="133.92907"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -68,7 +68,9 @@
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      showguides="false"
-     inkscape:snap-page="true" />
+     inkscape:snap-page="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true" />
   <metadata
      id="metadata3349">
     <rdf:RDF>
@@ -83,9 +85,25 @@
   </metadata>
   <g
      inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="ContornoComunicazione"
+     style="display:inline">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#00ff00;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 0,0 0,320 240,0 0,-320"
+       id="path4289"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#00ff00;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 240,0 0,0"
+       id="path4291"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="SFONDO"
-     style="display:inline">
+     style="display:none">
     <rect
        style="fill:#000000;fill-opacity:0;stroke:none"
        id="rect4596"
@@ -101,7 +119,7 @@
        x="26.4"
        y="198" />
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:0.35015774;stroke:none"
+       style="opacity:1;fill:#000000;fill-opacity:0.35015773;stroke:none"
        id="rect4618"
        width="240"
        height="320"
@@ -193,7 +211,8 @@
      inkscape:label="Temperatura"
      inkscape:groupmode="layer"
      transform="translate(0,230)"
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <circle
        style="fill:#e5742e;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.20123911px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="path4158"
@@ -312,7 +331,8 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="Scritte"
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#e5742e;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
