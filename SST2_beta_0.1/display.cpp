@@ -18,8 +18,8 @@
  
 float fT_max=0;
 float fT_min=99;
-float fH_max=0; 
-float fH_min=99;
+int fH_max=0; 
+int fH_min=99;
  
 SoftwareSerial serialDisplay(14, 12, false, 256); 
 
