@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.Atmel.ARMGCC.CPP</ToolchainName>
+    <ProjectGuid>{661e02eb-ebea-47ef-b318-c76fe986c983}</ProjectGuid>
+    <avrdevice>ATSAM3X8E</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>CPP</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>SST2_beta_0.1</AssemblyName>
+    <Name>SST2_beta_0.1</Name>
+    <RootNamespace>SST2_beta_0.1</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress />
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue />
+    <BootSegment>2</BootSegment>
+    <eraseonlaunchrule>1</eraseonlaunchrule>
+    <AsfFrameworkConfig>
+      <framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.22.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <ArmGccCpp>
+  <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
+  <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
+  <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
+  <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
+  <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
+  <armgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__ESP8266_ESp8266__</Value>
+      <Value>__ESP8266_ESP8266__</Value>
+      <Value>_VMDEBUG=1</Value>
+      <Value>ARDUINO=106011</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=80000000L</Value>
+      <Value>printf=iprintf</Value>
+      <Value>__ESP8266__</Value>
+      <Value>__ets__</Value>
+      <Value>ICACHE_FLASH</Value>
+      <Value>LWIP_OPEN_SRC</Value>
+      <Value>ARDUINO_ESP8266_WEMOS_D1MINI</Value>
+      <Value>ARDUINO_ARCH_ESP8266</Value>
+    </ListValues>
+  </armgcc.compiler.symbols.DefSymbols>
+  <armgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time/utility</Value>
+      <Value>Z:/Programmi/arduino-1.6.11/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/libb64</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/spiffs</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/umm_malloc</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/variants/d1_mini</Value>
+      <Value>../../../SST2_beta_0.1</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/lwip/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/Temp/VMicroBuilds/SST2_beta_0.1/esp8266_d1_mini/core</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers/VM_DBG</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/lib/gcc/xtensa-lx106-elf/4.8.2/include</Value>
+    </ListValues>
+  </armgcc.compiler.directories.IncludePaths>
+  <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
+  <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
+  <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
+  <armgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__ESP8266_ESp8266__</Value>
+      <Value>__ESP8266_ESP8266__</Value>
+      <Value>_VMDEBUG=1</Value>
+      <Value>ARDUINO=106011</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=80000000L</Value>
+      <Value>printf=iprintf</Value>
+      <Value>__ESP8266__</Value>
+      <Value>__ets__</Value>
+      <Value>ICACHE_FLASH</Value>
+      <Value>LWIP_OPEN_SRC</Value>
+      <Value>ARDUINO_ESP8266_WEMOS_D1MINI</Value>
+      <Value>ARDUINO_ARCH_ESP8266</Value>
+    </ListValues>
+  </armgcccpp.compiler.symbols.DefSymbols>
+  <armgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time/utility</Value>
+      <Value>Z:/Programmi/arduino-1.6.11/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/libb64</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/spiffs</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/umm_malloc</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/variants/d1_mini</Value>
+      <Value>../../../SST2_beta_0.1</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/lwip/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/Temp/VMicroBuilds/SST2_beta_0.1/esp8266_d1_mini/core</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers/VM_DBG</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/lib/gcc/xtensa-lx106-elf/4.8.2/include</Value>
+    </ListValues>
+  </armgcccpp.compiler.directories.IncludePaths>
+  <armgcccpp.compiler.optimization.level>Optimize (-O1)</armgcccpp.compiler.optimization.level>
+  <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <armgcccpp.compiler.optimization.DebugLevel>Maximum (-g3)</armgcccpp.compiler.optimization.DebugLevel>
+  <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
+  <armgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </armgcccpp.linker.libraries.Libraries>
+  <armgcccpp.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>../cmsis/linkerScripts</Value>
+    </ListValues>
+  </armgcccpp.linker.libraries.LibrarySearchPaths>
+  <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
+  <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsamd21e18a_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
+  <armgcccpp.assembler.debugging.DebugLevel>Default (-g)</armgcccpp.assembler.debugging.DebugLevel>
+  <armgcccpp.preprocessingassembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL\samd21\include</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\CMSIS\Include</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL</Value>
+    </ListValues>
+  </armgcccpp.preprocessingassembler.general.IncludePaths>
+  <armgcccpp.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcccpp.preprocessingassembler.debugging.DebugLevel>
+</ArmGccCpp>
+    </ToolchainSettings>
+    <VMSETTING_IncludePaths>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA/utility;C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master;C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial/utility;C:/Users/flavio/Documents/Arduino/libraries/souliss;C:/Users/flavio/Documents/Arduino/libraries/souliss/utility;Z:/Programmi/arduino-1.6.11/libraries;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries;C:/Users/flavio/Documents/Arduino/libraries;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/libb64;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/spiffs;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/umm_malloc;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/variants/d1_mini;../../../SST2_beta_0.1;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/include;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/lwip/include;C:/Users/flavio/AppData/Local/Temp/VMicroBuilds/SST2_beta_0.1/esp8266_d1_mini/core;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/lib/gcc/xtensa-lx106-elf/4.8.2/include;C:/Users/flavio/Documents/Arduino/libraries/Time;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM;C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src;C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM/utility;C:/Users/flavio/Documents/Arduino/libraries/Time/utility;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers/VM_DBG;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers;{build.path}/core;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings>
+        <arduino.upload.port>COM4</arduino.upload.port>
+        <debug.local.portname>COM4</debug.local.portname>
+        <debug.local.portspeed>115200</debug.local.portspeed>
+        <VM.DebugExt.AGaugeExample.Enabled>1</VM.DebugExt.AGaugeExample.Enabled>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>1</VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>
+        <VM.DebugVariablesWindow.ColumnVisibleFunctionName>1</VM.DebugVariablesWindow.ColumnVisibleFunctionName>
+        <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <ArmGccCpp>
+  <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
+  <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
+  <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
+  <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
+  <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
+  <armgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__ESP8266_ESp8266__</Value>
+      <Value>__ESP8266_ESP8266__</Value>
+      <Value>_VMDEBUG=1</Value>
+      <Value>ARDUINO=106011</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=80000000L</Value>
+      <Value>printf=iprintf</Value>
+      <Value>__ESP8266__</Value>
+      <Value>__ets__</Value>
+      <Value>ICACHE_FLASH</Value>
+      <Value>LWIP_OPEN_SRC</Value>
+      <Value>ARDUINO_ESP8266_WEMOS_D1MINI</Value>
+      <Value>ARDUINO_ARCH_ESP8266</Value>
+    </ListValues>
+  </armgcc.compiler.symbols.DefSymbols>
+  <armgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time/utility</Value>
+      <Value>Z:/Programmi/arduino-1.6.11/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/libb64</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/spiffs</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/umm_malloc</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/variants/d1_mini</Value>
+      <Value>../../../SST2_beta_0.1</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/lwip/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/Temp/VMicroBuilds/SST2_beta_0.1/esp8266_d1_mini/core</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers/VM_DBG</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/lib/gcc/xtensa-lx106-elf/4.8.2/include</Value>
+    </ListValues>
+  </armgcc.compiler.directories.IncludePaths>
+  <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
+  <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
+  <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
+  <armgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__ESP8266_ESp8266__</Value>
+      <Value>__ESP8266_ESP8266__</Value>
+      <Value>_VMDEBUG=1</Value>
+      <Value>ARDUINO=106011</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=80000000L</Value>
+      <Value>printf=iprintf</Value>
+      <Value>__ESP8266__</Value>
+      <Value>__ets__</Value>
+      <Value>ICACHE_FLASH</Value>
+      <Value>LWIP_OPEN_SRC</Value>
+      <Value>ARDUINO_ESP8266_WEMOS_D1MINI</Value>
+      <Value>ARDUINO_ARCH_ESP8266</Value>
+    </ListValues>
+  </armgcccpp.compiler.symbols.DefSymbols>
+  <armgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src/utility</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/souliss/utility</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries/Time/utility</Value>
+      <Value>Z:/Programmi/arduino-1.6.11/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries</Value>
+      <Value>C:/Users/flavio/Documents/Arduino/libraries</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/libb64</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/spiffs</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/umm_malloc</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/variants/d1_mini</Value>
+      <Value>../../../SST2_beta_0.1</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/lwip/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/Temp/VMicroBuilds/SST2_beta_0.1/esp8266_d1_mini/core</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers/VM_DBG</Value>
+      <Value>C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include</Value>
+      <Value>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/lib/gcc/xtensa-lx106-elf/4.8.2/include</Value>
+    </ListValues>
+  </armgcccpp.compiler.directories.IncludePaths>
+  <armgcccpp.compiler.optimization.level>Optimize (-O1)</armgcccpp.compiler.optimization.level>
+  <armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <armgcccpp.compiler.optimization.DebugLevel>Maximum (-g3)</armgcccpp.compiler.optimization.DebugLevel>
+  <armgcccpp.compiler.warnings.AllWarnings>True</armgcccpp.compiler.warnings.AllWarnings>
+  <armgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </armgcccpp.linker.libraries.Libraries>
+  <armgcccpp.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>../cmsis/linkerScripts</Value>
+    </ListValues>
+  </armgcccpp.linker.libraries.LibrarySearchPaths>
+  <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
+  <armgcccpp.linker.miscellaneous.LinkerFlags>-Tsamd21e18a_flash.ld</armgcccpp.linker.miscellaneous.LinkerFlags>
+  <armgcccpp.assembler.debugging.DebugLevel>Default (-g)</armgcccpp.assembler.debugging.DebugLevel>
+  <armgcccpp.preprocessingassembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL\samd21\include</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\CMSIS\Include</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL</Value>
+    </ListValues>
+  </armgcccpp.preprocessingassembler.general.IncludePaths>
+  <armgcccpp.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcccpp.preprocessingassembler.debugging.DebugLevel>
+</ArmGccCpp>
+    </ToolchainSettings>
+    <VMSETTING_IncludePaths>C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ArduinoOTA/utility;C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master;C:/Users/flavio/Documents/Arduino/libraries/DHT-sensor-library-master/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/esp8266/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266mDNS/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WebServer/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/ESP8266WiFi/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/SoftwareSerial/utility;C:/Users/flavio/Documents/Arduino/libraries/souliss;C:/Users/flavio/Documents/Arduino/libraries/souliss/utility;Z:/Programmi/arduino-1.6.11/libraries;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries;C:/Users/flavio/Documents/Arduino/libraries;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/libb64;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/spiffs;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/cores/esp8266/umm_malloc;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/variants/d1_mini;../../../SST2_beta_0.1;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/include;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/tools/sdk/lwip/include;C:/Users/flavio/AppData/Local/Temp/VMicroBuilds/SST2_beta_0.1/esp8266_d1_mini/core;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include/c++/4.8.2/xtensa-lx106-elf;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/xtensa-lx106-elf/include;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2/lib/gcc/xtensa-lx106-elf/4.8.2/include;C:/Users/flavio/Documents/Arduino/libraries/Time;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM;C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src;C:/Users/flavio/Documents/Arduino/libraries/ArduinoJson-master/src/utility;C:/Users/flavio/AppData/Local/arduino15/packages/esp8266/hardware/esp8266/2.3.0-rc2/libraries/EEPROM/utility;C:/Users/flavio/Documents/Arduino/libraries/Time/utility;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers/VM_DBG;C:/Program Files (x86)/Atmel/Studio/7.0/Extensions/qdumr0sk.lql/Micro Platforms/default/debuggers;{build.path}/core;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings>
+        <arduino.upload.port>COM4</arduino.upload.port>
+        <debug.local.portname>COM4</debug.local.portname>
+        <debug.local.portspeed>115200</debug.local.portspeed>
+        <VM.DebugExt.AGaugeExample.Enabled>1</VM.DebugExt.AGaugeExample.Enabled>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>1</VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>
+        <VM.DebugVariablesWindow.ColumnVisibleFunctionName>1</VM.DebugVariablesWindow.ColumnVisibleFunctionName>
+        <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
+        <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="board.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="SST2_beta_0.1.ino">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="__vm\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="connection_dynamic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="connection_static.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="constants.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="display.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="display.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="language.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ntp.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ntp.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="preferences.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="read_save.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="read_save.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="topics.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="__vm\.SST2_beta_0.1.vsarduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
