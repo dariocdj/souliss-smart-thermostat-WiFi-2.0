@@ -9,67 +9,67 @@
       <VCCodeMacros />
     </VCCodeModel>
     <BreakPoints>
-      <BreakPoint Index="1" Name="SST2_beta_0.1.ino, line 161 character 1" Id="42679aea-d3c6-4736-ab41-5d2baa065396" Enabled="1" Message="breakpoint 1" MessageTextType="0" PreProcessedMessage="breakpoint 1" Condition="" ConditionType="1" CurrentHits="0" File="c:\users\flavio\documents\souliss-smart-thermostat-wifi-2.0\sst2_beta_0.1\sst2_beta_0.1.ino" FileLine="161" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='42679aea-d3c6-4736-ab41-5d2baa065396'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>154	  hostname += String(ESP.getChipId(), HEX);
-155	  #ifdef DEBUG
-156	    SERIAL_OUT.print("set OTA hostname: "); SERIAL_OUT.println(hostname);
-157	  #endif
-158	  ArduinoOTA.setHostname((const char *)hostname.c_str());
-159	  ArduinoOTA.begin();
-160	  yield();
---&gt;161	
-162	  backlightDisplay(10);
-163	  page(1);
-164	  getTemp(); 
-165	  sendHour();
-166	  sendDate();
-167	}
-168	
-169	void loop() {       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-170	
+      <BreakPoint Index="1" Name="SST2_beta_0.1.ino, line 155 character 1" Id="42679aea-d3c6-4736-ab41-5d2baa065396" Enabled="1" Message="breakpoint 1" MessageTextType="0" PreProcessedMessage="breakpoint 1" Condition="" ConditionType="1" CurrentHits="0" File="c:\users\flavio\documents\souliss-smart-thermostat-wifi-2.0\sst2_beta_0.1\sst2_beta_0.1.ino" FileLine="155" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='42679aea-d3c6-4736-ab41-5d2baa065396'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>148	  hostname += String(ESP.getChipId(), HEX);
+149	  #ifdef DEBUG
+150	    SERIAL_OUT.print("set OTA hostname: "); SERIAL_OUT.println(hostname);
+151	  #endif
+152	  ArduinoOTA.setHostname((const char *)hostname.c_str());
+153	  ArduinoOTA.begin();
+154	  yield();
+--&gt;155	
+156	  backlightDisplay(10);
+157	  page(1);
+158	  getTemp(); 
+159	  sendHour();
+160	  sendDate();
+161	}
+162	
+163	void loop() {       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+164	
 </Source>
       </BreakPoint>
-      <BreakPoint Index="2" Name="SST2_beta_0.1.ino, line 244 character 1" Id="5ac40c1f-4713-4a7a-9658-e29857a77f0c" Enabled="1" Message="fValT Humidity is {fValT}" MessageTextType="0" PreProcessedMessage="fValT Humidity is {0}" Condition="" ConditionType="1" CurrentHits="0" File="c:\users\flavio\documents\souliss-smart-thermostat-wifi-2.0\sst2_beta_0.1\sst2_beta_0.1.ino" FileLine="244" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='5ac40c1f-4713-4a7a-9658-e29857a77f0c'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>237	    temperature = fValT; //memorizza temperatura se non è Not A Number
-238	    //Import temperature into T31 Thermostat
-239	  } else {
-240	    bFlagBegin = true;
-241	  }
-242	
-243	  // Read humidity value from DHT sensor and convert from single-precision to half-precision
---&gt;244	  fValT = dht.readHumidity();
-245	    SERIAL_OUT.print("ACQ Humidity: ");SERIAL_OUT.println(fValT);
-246	  if (!isnan(fValT)) {
-247	    humidity = fValT;
-248	  } else {
-249	    bFlagBegin = true;
-250	  }
-251	
-252	  if (bFlagBegin) {
-253	    //if DHT fail then try to reinit
+      <BreakPoint Index="2" Name="SST2_beta_0.1.ino, line 240 character 1" Id="5ac40c1f-4713-4a7a-9658-e29857a77f0c" Enabled="1" Message="fValT Humidity is {fValT}" MessageTextType="0" PreProcessedMessage="fValT Humidity is {0}" Condition="" ConditionType="1" CurrentHits="0" File="c:\users\flavio\documents\souliss-smart-thermostat-wifi-2.0\sst2_beta_0.1\sst2_beta_0.1.ino" FileLine="240" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='5ac40c1f-4713-4a7a-9658-e29857a77f0c'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>233	    temperature = fValT; //memorizza temperatura se non è Not A Number
+234	    //Import temperature into T31 Thermostat
+235	  } else {
+236	    bFlagBegin = true;
+237	  }
+238	
+239	  // Read humidity value from DHT sensor and convert from single-precision to half-precision
+--&gt;240	  fValT = dht.readHumidity();
+241	  #ifdef DEBUG
+242	    SERIAL_OUT.print("ACQ Humidity: ");SERIAL_OUT.println(fValT);
+243	  #endif
+244	  if (!isnan(fValT)) {
+245	    humidity = fValT;
+246	  } else {
+247	    bFlagBegin = true;
+248	  }
+249	
 </Source>
         <MessageVariables>
           <MessageVariable Name="fValT" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="3" Name="SST2_beta_0.1.ino, line 234 character 1" Id="d4c7684a-a341-4e6a-be38-65bdb3e42a91" Enabled="1" Message="fValT Temperature is {fValT}" MessageTextType="0" PreProcessedMessage="fValT Temperature is {0}" Condition="" ConditionType="1" CurrentHits="0" File="c:\users\flavio\documents\souliss-smart-thermostat-wifi-2.0\sst2_beta_0.1\sst2_beta_0.1.ino" FileLine="234" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='d4c7684a-a341-4e6a-be38-65bdb3e42a91'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>227	
-228	
-229	
-230	
-231	void getTemp() {
-232	  read_another_time:
-233	  // Read temperature value from DHT sensor and convert from single-precision to half-precision
---&gt;234	  fValT = dht.readTemperature();
-235	    SERIAL_OUT.print("ACQ Temperature: ");SERIAL_OUT.println(fValT);
-236	  if (!isnan(fValT)) {
-237	    temperature = fValT; //memorizza temperatura se non è Not A Number
-238	    //Import temperature into T31 Thermostat
-239	  } else {
-240	    bFlagBegin = true;
-241	  }
-242	
-243	  // Read humidity value from DHT sensor and convert from single-precision to half-precision
+      <BreakPoint Index="3" Name="SST2_beta_0.1.ino, line 228 character 1" Id="d4c7684a-a341-4e6a-be38-65bdb3e42a91" Enabled="1" Message="fValT Temperature is {fValT}" MessageTextType="0" PreProcessedMessage="fValT Temperature is {0}" Condition="" ConditionType="1" CurrentHits="0" File="c:\users\flavio\documents\souliss-smart-thermostat-wifi-2.0\sst2_beta_0.1\sst2_beta_0.1.ino" FileLine="228" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='d4c7684a-a341-4e6a-be38-65bdb3e42a91'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>221	
+222	
+223	
+224	
+225	void getTemp() {
+226	  read_another_time:
+227	  // Read temperature value from DHT sensor and convert from single-precision to half-precision
+--&gt;228	  fValT = dht.readTemperature();
+229	  #ifdef DEBUG
+230	    SERIAL_OUT.print("ACQ Temperature: ");SERIAL_OUT.println(fValT);
+231	  #endif
+232	  if (!isnan(fValT)) {
+233	    temperature = fValT; //memorizza temperatura se non è Not A Number
+234	    //Import temperature into T31 Thermostat
+235	  } else {
+236	    bFlagBegin = true;
+237	  }
 </Source>
         <MessageVariables>
           <MessageVariable Name="fValT" Index="1" />

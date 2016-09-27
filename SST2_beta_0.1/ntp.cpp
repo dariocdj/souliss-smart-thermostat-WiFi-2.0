@@ -94,7 +94,9 @@ time_t getNtpTime()
         return secsSince1900 - 2208988800UL + (tZonetemp + 1) * SECS_PER_HOUR;
         } 
     } else {
-		SERIAL_OUT.println("NTP failed, try to reinit ");
+		#ifdef DEBUGDEV
+		  SERIAL_OUT.println("NTP failed, try to reinit ");
+		#endif
 		goto reinit_NTP;
 	}	
   }

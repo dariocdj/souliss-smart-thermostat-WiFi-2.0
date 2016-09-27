@@ -69,5 +69,9 @@
 //AWAY
 #define TEMP_MINUS 1
 
+//SERIAL
 #define SERIAL_OUT Serial
+#define DEBUG                                 //USER DEBUG ON UART0
+#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
+
 

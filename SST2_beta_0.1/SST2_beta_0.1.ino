@@ -10,12 +10,6 @@
 
 
 
-#define DEBUG                                 //USER DEBUG ON UART0
-//#define DEBUGDEV                              //DEVELOPMENT DEBUG ON UART0
-
-
-
-
 #include "SoulissFramework.h"                 // Let the IDE point to the Souliss framework
 
 #include <ESP8266WiFi.h>
@@ -232,7 +226,9 @@ void getTemp() {
   read_another_time:
   // Read temperature value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readTemperature();
+  #ifdef DEBUG
     SERIAL_OUT.print("ACQ Temperature: ");SERIAL_OUT.println(fValT);
+  #endif
   if (!isnan(fValT)) {
     temperature = fValT; //memorizza temperatura se non è Not A Number
     //Import temperature into T31 Thermostat
@@ -242,7 +238,9 @@ void getTemp() {
 
   // Read humidity value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readHumidity();
+  #ifdef DEBUG
     SERIAL_OUT.print("ACQ Humidity: ");SERIAL_OUT.println(fValT);
+  #endif
   if (!isnan(fValT)) {
     humidity = fValT;
   } else {
@@ -253,15 +251,19 @@ void getTemp() {
     //if DHT fail then try to reinit
     dht.begin();
     bFlagBegin=false;
+	#ifdef DEBUGDEV
       SERIAL_OUT.println(" dht.begin();");
       SERIAL_OUT.println(" read another time");
+	#endif
     goto read_another_time;
   }  
   int humi = humidity;
   if(temperatureprev!=temperature || humidityprev!=humi){
-    Serial.print("    update T&H on: ");Serial.print(getNTPday());Serial.print(".");Serial.print(getNTPmonth());Serial.print(".");Serial.print(getNTPyear());Serial.print(" @ ");
-    Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
-    send_T_H_display(temperature,humidity);
+	#ifdef DEBUG
+	  Serial.print("    update T&H on: ");Serial.print(getNTPday());Serial.print(".");Serial.print(getNTPmonth());Serial.print(".");Serial.print(getNTPyear());Serial.print(" @ ");
+	  Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
+    #endif
+	send_T_H_display(temperature,humidity);
   }
   temperatureprev = temperature;
   humidityprev = humi;  
@@ -269,11 +271,13 @@ void getTemp() {
 
 
 void bright(int lum) {
-  int val = ((float)lum);
-  if (val > 100) val = 100;
-  if (val < 0) val = 0;
-    SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(val);
-  backlightDisplay(val);
+  int va = ((float)lum);
+  if (va > 100) va = 100;
+  if (va < 0) va = 0;
+  #ifdef DEBUGDEV
+    SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(va);
+  #endif
+  backlightDisplay(va);
 }
 
 

@@ -25,6 +25,9 @@ void sendDate();
 void bclockON();
 void bclockOFF();
 void cursore(int);
+void get_T_Min_Max(float);
+void get_H_Min_Max(float);
+void reset_Min_Max();
 int arrotonda(float);
 int dopovirgola(float);
 
