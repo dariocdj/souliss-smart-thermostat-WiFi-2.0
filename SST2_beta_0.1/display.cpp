@@ -16,6 +16,7 @@
 #include "ntp.h"
 #include <SoftwareSerial.h>
  
+ 
 float fT_max=0;
 float fT_min=99;
 int fH_max=0; 
@@ -30,12 +31,23 @@ void setupDisplay(){
 }
 
 
+
+
+
 void cursore(int cursorvalue){
   serialDisplay.print("h0.val=");serialDisplay.print(cursorvalue);
   ackDisplay(); 
 }
 
 void bclockON(){
+  serialDisplay.print("vis p4,1");
+  ackDisplay();
+  serialDisplay.print("vis p3,1");
+  ackDisplay();
+  serialDisplay.print("vis p2,1");
+  ackDisplay();
+  serialDisplay.print("vis p1,1");
+  ackDisplay();
   serialDisplay.print("vis p0,1");
   ackDisplay();
 }
@@ -43,6 +55,14 @@ void bclockON(){
 void bclockOFF(){
   serialDisplay.print("vis p0,0");
   ackDisplay();
+  serialDisplay.print("vis p1,0");
+  ackDisplay();
+  serialDisplay.print("vis p2,0");
+  ackDisplay();
+  serialDisplay.print("vis p3,0");
+  ackDisplay();  
+  serialDisplay.print("vis p4,0");
+  ackDisplay();      
 }
 
 void page(int n){

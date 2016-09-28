@@ -136,10 +136,7 @@ void setup()
   dht.begin();
 
 
-  //NTP
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////
-  initNTP();
-  delay(2000);
+
 
   
   // Init the OTA
@@ -152,9 +149,15 @@ void setup()
   ArduinoOTA.setHostname((const char *)hostname.c_str());
   ArduinoOTA.begin();
   yield();
+  
+  delay(1000);
+  //NTP
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////
+  initNTP();
 
   backlightDisplay(10);
   page(1);
+  bclockOFF();
   getTemp(); 
   sendHour();
   sendDate();
@@ -171,13 +174,7 @@ EXECUTEFAST() {
   }
   
   SHIFT_210ms(0) {
-    if(b==0){
-      bclockON();
-      b=1;      
-    }else{
-      bclockOFF();
-      b=0;     
-    }
+
      //TODO
   }
 
@@ -193,17 +190,27 @@ EXECUTESLOW() {
   UPDATESLOW();
 
   SLOW_10s() {
-    getTemp();
+	bclockON();
+	getTemp();
+	bclockOFF();	  
   }
 
   SLOW_50s() {
     sendHour();
+	//At 03.00 is time to reset min/max temperature & synching NTP
+	int hour=getNTPhour();
+	int min=getNTPminute();
+	if (hour==3 && min==0) {
+		initNTP();
+		reset_Min_Max();
+	}
+	
   }
 
-  SLOW_15m() {
-      //Sincronizzazione NTP
-      initNTP();
-  }
+//  SLOW_15m() {
+//      //Risincronizzazione NTP
+//      initNTP();
+//  }
   
   SLOW_4h() {
     sendDate();
