@@ -17,6 +17,10 @@
 #include <TimeLib.h>
 #include "display.h" 
 #include "read_save.h"
+//#include "ntp.h"
+
+int itrytosync=0;
+
 //NTP
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 unsigned int localPort = 8888;  // local port to listen for UDP packets
@@ -42,7 +46,7 @@ void sendNTPpacket(IPAddress &address)
   // (see URL above for details on the packets)
   packetBuffer[0] = 0b11100011;   // LI, Version, Mode
   packetBuffer[1] = 0;     // Stratum, or type of clock
-  packetBuffer[2] = 6;     // Polling Interval
+  packetBuffer[2] = 60;     // Polling Interval
   packetBuffer[3] = 0xEC;  // Peer Clock Precision
   // 8 bytes of zero for Root Delay & Root Dispersion
   packetBuffer[12]  = 49;
@@ -58,6 +62,7 @@ void sendNTPpacket(IPAddress &address)
 
 time_t getNtpTime()
 {
+  itrytosync=0;
   reinit_NTP:
   while (udp_NTP.parsePacket() > 0) ; // discard any previously received packets
   #ifdef DEBUG
@@ -65,7 +70,7 @@ time_t getNtpTime()
   #endif
   sendNTPpacket(timeServer);
   uint32_t beginWait = millis();
-  while (millis() - beginWait < 1500) {
+  while ((millis() - beginWait) < 1500) {
     int size = udp_NTP.parsePacket();
     if (size >= NTP_PACKET_SIZE) {
       #ifdef DEBUG
@@ -95,16 +100,22 @@ time_t getNtpTime()
         } 
     } else {
 		#ifdef DEBUGDEV
-		  SERIAL_OUT.println("NTP failed, try to reinit ");
+		  	SERIAL_OUT.println("NTP failed");
 		#endif
-		goto reinit_NTP;
+		delay(100);
 	}	
   }
   #ifdef DEBUG
     SERIAL_OUT.println("No NTP Response :-(");
   #endif
+  	if (itrytosync<5) {
+	++itrytosync;
+	#ifdef DEBUGDEV
+		SERIAL_OUT.print("NTP failed, try to reinit: ");SERIAL_OUT.println(itrytosync);
+	#endif
+	goto reinit_NTP;
+  	}
   return 0; // return 0 if unable to get the time
-  goto reinit_NTP;
 }
 
 
