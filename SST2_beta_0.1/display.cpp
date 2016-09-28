@@ -30,11 +30,45 @@ void setupDisplay(){
   serialDisplay.begin(9600);
 }
 
+//LETTURE
+
+int getDisplayInt(int n) {
+	uint8_t array[8]= {0};
+	serialDisplay.print("get n");serialDisplay.print(n);serialDisplay.print(".val");
+	ackDisplay();
+	delay(20);
+	while (serialDisplay.available() > 0) {
+		serialDisplay.readBytes(array,8);
+	}	
+	/*SERIAL_OUT.print("array: ");SERIAL_OUT.print(array[0],HEX);
+	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[1],HEX);
+	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[2],HEX);
+	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[3],HEX);
+	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[4],HEX);
+	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[5],HEX);
+	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[6],HEX);
+	SERIAL_OUT.print(" , ");SERIAL_OUT.println(array[7],HEX); */
+		
+uint32_t numericalData = (array[4] << 24) | (array[3] << 16) | (array[2] << 8) | (array[1]);
+return numericalData;
+}
 
 
+float getSetpoint() {
+	int val2=0;
+	float val1=0;
+	float oldsetpoint;
+	val2=getDisplayInt(3)*10;
+	val1=val2+getDisplayInt(4);
+	#ifdef DEBUGDEV
+		SERIAL_OUT.print("Setpoint retrieved from display: ");SERIAL_OUT.println(val1/10);
+	#endif
+	return val1/10;	
+}
 
+//COMANDO
 
-void cursore(int cursorvalue){
+void cursore(int cursorvalue) {
   serialDisplay.print("h0.val=");serialDisplay.print(cursorvalue);
   ackDisplay(); 
 }

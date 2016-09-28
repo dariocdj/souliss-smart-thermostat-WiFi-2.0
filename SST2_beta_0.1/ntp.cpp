@@ -44,10 +44,10 @@ void sendNTPpacket(IPAddress &address)
   //memset(packetBuffer, MEMSET_NTP_START, NTP_PACKET_SIZE);
   // Initialize values needed to form NTP request
   // (see URL above for details on the packets)
-  packetBuffer[0] = 0b11100011;   // LI, Version, Mode
-  packetBuffer[1] = 0;     // Stratum, or type of clock
-  packetBuffer[2] = 60;     // Polling Interval
-  packetBuffer[3] = 0xEC;  // Peer Clock Precision
+  packetBuffer[0] = 0b11100011;		// LI, Version, Mode
+  packetBuffer[1] = 0;				// Stratum, or type of clock
+  packetBuffer[2] = 6000;			// Polling Interval
+  packetBuffer[3] = 0xEC;			// Peer Clock Precision
   // 8 bytes of zero for Root Delay & Root Dispersion
   packetBuffer[12]  = 49;
   packetBuffer[13]  = 0x4E;
@@ -76,7 +76,6 @@ time_t getNtpTime()
       #ifdef DEBUG
         SERIAL_OUT.println("Receive NTP Response");
       #endif
-	  
       udp_NTP.read(packetBuffer, NTP_PACKET_SIZE);  // read packet into the buffer
       unsigned long secsSince1900;
       // convert four bytes starting at location 40 to a long integer

@@ -29,6 +29,7 @@
 //
 void getTemp();
 void bright(int lum);
+void checkRele();
 
 #include "pins_arduino.h" 
 #include "arduino.h"

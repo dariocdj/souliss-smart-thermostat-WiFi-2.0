@@ -76,10 +76,13 @@ float fTopic_A4_Output;
 float fTopic_A5_Output;
 float fTopic_A6_Output;
 
+boolean relaystatus=0;
 boolean bChildLock = false;
 boolean T_or_H_isNan = false;
 boolean bFlagBegin = false;
 boolean b=0;
+
+
 
 
 void setup()
@@ -190,21 +193,26 @@ EXECUTESLOW() {
   UPDATESLOW();
 
   SLOW_10s() {
+	setpoint=getSetpoint();
 	bclockON();
 	getTemp();
-	bclockOFF();	  
+	bclockOFF();
+	checkRele();
   }
 
+  
   SLOW_50s() {
     sendHour();
 	//At 03.00 is time to reset min/max temperature & synching NTP
 	int hour=getNTPhour();
 	int min=getNTPminute();
 	if (hour==3 && min==0) {
+		#ifdef DEBUGDEV
+			SERIAL_OUT.print("INIT_NTP + RESET MIN-MAX VALUE @ ");Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
+		#endif
 		initNTP();
 		reset_Min_Max();
 	}
-	
   }
 
 //  SLOW_15m() {
@@ -278,15 +286,25 @@ void getTemp() {
 
 
 void bright(int lum) {
-  int va = ((float)lum);
-  if (va > 100) va = 100;
-  if (va < 0) va = 0;
-  #ifdef DEBUGDEV
-    SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(va);
-  #endif
-  backlightDisplay(va);
+	int va = ((float)lum);
+	if (va > 100) va = 100;
+	if (va < 0) va = 0;
+	#ifdef DEBUGDEV
+		SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(va);
+	#endif
+	backlightDisplay(va);
 }
 
 
-
-
+void checkRele() {
+	if (temperature > setpoint && (relaystatus==1)) {
+		SERIAL_OUT.print("	DEACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
+		digitalWrite(RELE,0);
+		relaystatus=0;
+	}
+	if (temperature < setpoint && (relaystatus==0)) {
+		SERIAL_OUT.print("	ACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
+		digitalWrite(RELE,1);
+		relaystatus=1;
+	}
+}
