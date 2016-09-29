@@ -60,7 +60,7 @@ float humidity = 0;
 float temperatureprev = 0;
 int humidityprev = 0;
 float fValT = 0;
-float setpoint = 0;
+float setpoint_retrieved = 0;
 bool brefreshth = 0;
 
 int backLEDvalue = 0;
@@ -153,17 +153,19 @@ void setup()
   ArduinoOTA.begin();
   yield();
   
-  delay(1000);
+  delay(5000);
   //NTP
   /////////////////////////////////////////////////////////////////////////////////////////////////////////
   initNTP();
 
+
+  
   backlightDisplay(10);
-  page(1);
   bclockOFF();
   getTemp(); 
   sendHour();
   sendDate();
+  page(1);
 }
 
 void loop() {       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,9 +174,10 @@ EXECUTEFAST() {
 
   UPDATEFAST();
 
-  FAST_50ms() {
-    
-  }
+	
+  //FAST_910ms() {
+    //sendHour();
+  //}
   
   SHIFT_210ms(0) {
 
@@ -193,16 +196,19 @@ EXECUTESLOW() {
   UPDATESLOW();
 
   SLOW_10s() {
-	setpoint=getSetpoint();
 	bclockON();
 	getTemp();
 	bclockOFF();
+  }
+  
+  SLOW_x10s(3) {
+	setpoint_retrieved=getSetpoint();  
 	checkRele();
   }
-
   
   SLOW_50s() {
-    sendHour();
+	sendHour();
+	sendDate();
 	//At 03.00 is time to reset min/max temperature & synching NTP
 	int hour=getNTPhour();
 	int min=getNTPminute();
@@ -219,10 +225,7 @@ EXECUTESLOW() {
 //      //Risincronizzazione NTP
 //      initNTP();
 //  }
-  
-  SLOW_4h() {
-    sendDate();
-  }
+
 
   #if(DYNAMIC_CONNECTION==1)
     DYNAMIC_CONNECTION_slow();
@@ -242,7 +245,7 @@ void getTemp() {
   // Read temperature value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readTemperature();
   #ifdef DEBUG
-    SERIAL_OUT.print("ACQ Temperature: ");SERIAL_OUT.println(fValT);
+    SERIAL_OUT.print("CHECK Temperature: ");SERIAL_OUT.println(fValT);
   #endif
   if (!isnan(fValT)) {
     temperature = fValT; //memorizza temperatura se non è Not A Number
@@ -254,7 +257,7 @@ void getTemp() {
   // Read humidity value from DHT sensor and convert from single-precision to half-precision
   fValT = dht.readHumidity();
   #ifdef DEBUG
-    SERIAL_OUT.print("ACQ Humidity: ");SERIAL_OUT.println(fValT);
+    SERIAL_OUT.print("CHECK Humidity: ");SERIAL_OUT.println(fValT);
   #endif
   if (!isnan(fValT)) {
     humidity = fValT;
@@ -297,13 +300,15 @@ void bright(int lum) {
 
 
 void checkRele() {
-	if (temperature > setpoint && (relaystatus==1)) {
-		SERIAL_OUT.print("	DEACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
+	if (temperature > setpoint_retrieved && relaystatus==1) {
+		SERIAL_OUT.print("	DEACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.print(getNTPminute());
+		SERIAL_OUT.print(" Setpoint: ");Serial.print(setpoint_retrieved);SERIAL_OUT.print(" Temperature: ");Serial.println(temperature);
 		digitalWrite(RELE,0);
 		relaystatus=0;
 	}
-	if (temperature < setpoint && (relaystatus==0)) {
-		SERIAL_OUT.print("	ACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
+	if (temperature < setpoint_retrieved && relaystatus==0) {
+		SERIAL_OUT.print("	ACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.print(getNTPminute());
+		SERIAL_OUT.print(" Setpoint: ");Serial.print(setpoint_retrieved);SERIAL_OUT.print(" Temperature: ");Serial.println(temperature);
 		digitalWrite(RELE,1);
 		relaystatus=1;
 	}

@@ -207,7 +207,7 @@
         <arduino.upload.port>COM4</arduino.upload.port>
         <debug.local.portname>COM4</debug.local.portname>
         <debug.local.portspeed>115200</debug.local.portspeed>
-        <VM.DebugExt.AGaugeExample.Enabled>1</VM.DebugExt.AGaugeExample.Enabled>
+        <VM.DebugExt.AGaugeExample.Enabled>0</VM.DebugExt.AGaugeExample.Enabled>
         <VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>
         <VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>
         <VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>1</VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>
@@ -215,6 +215,7 @@
         <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
         <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
         <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
+        <custom_esp8266_d1_mini_CpuFrequency>80</custom_esp8266_d1_mini_CpuFrequency>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -386,7 +387,7 @@
         <arduino.upload.port>COM4</arduino.upload.port>
         <debug.local.portname>COM4</debug.local.portname>
         <debug.local.portspeed>115200</debug.local.portspeed>
-        <VM.DebugExt.AGaugeExample.Enabled>1</VM.DebugExt.AGaugeExample.Enabled>
+        <VM.DebugExt.AGaugeExample.Enabled>0</VM.DebugExt.AGaugeExample.Enabled>
         <VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueHex>
         <VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>
         <VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>1</VM.DebugVariablesWindow.ColumnVisibleVariableRefreshOn>
@@ -394,6 +395,7 @@
         <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
         <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
         <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
+        <custom_esp8266_d1_mini_CpuFrequency>80</custom_esp8266_d1_mini_CpuFrequency>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>

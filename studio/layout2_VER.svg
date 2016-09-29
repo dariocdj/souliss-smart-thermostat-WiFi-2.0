@@ -18,7 +18,7 @@
    inkscape:version="0.91 r13725"
    viewBox="0 0 240 320"
    sodipodi:docname="layout2_VER.svg"
-   inkscape:export-filename="C:\Users\Flavio\Documents\souliss-smart-thermostat-WiFi-2.0\linea_O.png"
+   inkscape:export-filename="C:\Users\flavio\Documents\souliss-smart-thermostat-WiFi-2.0\studio\layout_VER_1.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -52,11 +52,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.0606996"
-     inkscape:cx="114.37617"
-     inkscape:cy="186.87135"
+     inkscape:zoom="2.1642414"
+     inkscape:cx="74.330451"
+     inkscape:cy="174.00891"
      inkscape:document-units="px"
-     inkscape:current-layer="layer6"
+     inkscape:current-layer="layer5"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -212,8 +212,7 @@
      inkscape:label="Temperatura"
      inkscape:groupmode="layer"
      transform="translate(0,230)"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <circle
        style="fill:#e5742e;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.20123911px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="path4158"
@@ -299,17 +298,6 @@
          id="tspan4286"
          x="-22.061731"
          y="-20.166519" /></text>
-    <g
-       id="g4386"
-       transform="matrix(0.09717749,0,0,0.10170756,152.65039,-167.27894)"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
-      <path
-         id="path4378"
-         d="m 756.25357,377.09913 0,-237.37046 c 0,-15.5782 -12.7275,-28.1954 -28.4135,-28.1954 -15.6869,0 -28.4135,12.6172 -28.4135,28.1954 l 0,237.37046 c -16.9078,8.9495 -28.4135,25.4371 -28.4135,44.5134 0,28.5314 25.4532,51.6799 56.827,51.6799 31.3729,0 56.827,-23.1485 56.827,-51.6799 0,-19.0763 -11.4879,-35.5639 -28.4135,-44.5134 z"
-         inkscape:connector-curvature="0"
-         style="clip-rule:evenodd;fill:#e5742e;fill-opacity:1;fill-rule:evenodd" />
-    </g>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -346,36 +334,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="Scritte"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#e5742e;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="146.0372"
-       y="168.99998"
-       id="text4710"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         x="146.0372"
-         y="168.99998"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#e5742e;fill-opacity:1"
-         id="tspan5214">max.</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#15c7ee;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="149.03719"
-       y="186.00162"
-       id="text4710-9"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         id="tspan4712-1"
-         x="149.03719"
-         y="186.00162"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">min.</tspan></text>
+     style="display:inline">
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -542,26 +501,12 @@
          x="-312.19897"
          y="141.39046"
          style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI, Semi-Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#8b8b8b;fill-opacity:1">rit.</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#8b8b8b;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="102.83603"
-       y="178.14999"
-       id="text4710-7"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         x="102.83603"
-         y="178.14999"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#8b8b8b;fill-opacity:1"
-         id="tspan5214-8">today </tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="DATI"
-     style="display:inline"
+     style="display:none"
      sodipodi:insensitive="true">
     <text
        xml:space="preserve"
@@ -910,19 +855,32 @@
          id="tspan4262-2"
          x="196.16943"
          y="-120.00029">°</tspan></text>
+    <g
+       style="display:inline"
+       id="g4386"
+       transform="matrix(0.09717749,0,0,0.10170756,-9.06909,82.27917)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         id="path4378"
+         d="m 756.25357,377.09913 0,-237.37046 c 0,-15.5782 -12.7275,-28.1954 -28.4135,-28.1954 -15.6869,0 -28.4135,12.6172 -28.4135,28.1954 l 0,237.37046 c -16.9078,8.9495 -28.4135,25.4371 -28.4135,44.5134 0,28.5314 25.4532,51.6799 56.827,51.6799 31.3729,0 56.827,-23.1485 56.827,-51.6799 0,-19.0763 -11.4879,-35.5639 -28.4135,-44.5134 z"
+         inkscape:connector-curvature="0"
+         style="clip-rule:evenodd;fill:#e5742e;fill-opacity:1;fill-rule:evenodd" />
+    </g>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="ContornoComunicazione"
-     style="display:inline">
+     style="display:none"
+     sodipodi:insensitive="true">
     <rect
        style="opacity:0.75;fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-width:1.31539035;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:10;stroke-opacity:1"
        id="rect4283"
        width="8.6846094"
        height="8.6846094"
-       x="54.484787"
-       y="107.19135"
+       x="146.62059"
+       y="58.182949"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
   </g>

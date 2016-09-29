@@ -28,6 +28,7 @@ SoftwareSerial serialDisplay(14, 12, false, 256);
 
 void setupDisplay(){
   serialDisplay.begin(9600);
+  //serialDisplay.print("bauds=115200");
 }
 
 //LETTURE
@@ -36,10 +37,16 @@ int getDisplayInt(int n) {
 	uint8_t array[8]= {0};
 	serialDisplay.print("get n");serialDisplay.print(n);serialDisplay.print(".val");
 	ackDisplay();
-	delay(20);
-	while (serialDisplay.available() > 0) {
-		serialDisplay.readBytes(array,8);
-	}	
+	reload_read:
+	while (serialDisplay.available()>0)
+		if (serialDisplay.read()==0X71) {
+			goto serial_read;
+			} else {
+			goto reload_read;
+		}	
+	serial_read:
+	serialDisplay.readBytes((char *)array, sizeof(array));
+		
 	/*SERIAL_OUT.print("array: ");SERIAL_OUT.print(array[0],HEX);
 	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[1],HEX);
 	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[2],HEX);
@@ -47,23 +54,32 @@ int getDisplayInt(int n) {
 	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[4],HEX);
 	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[5],HEX);
 	SERIAL_OUT.print(" , ");SERIAL_OUT.print(array[6],HEX);
-	SERIAL_OUT.print(" , ");SERIAL_OUT.println(array[7],HEX); */
-		
-uint32_t numericalData = (array[4] << 24) | (array[3] << 16) | (array[2] << 8) | (array[1]);
-return numericalData;
+	SERIAL_OUT.print(" , ");SERIAL_OUT.println(array[7],HEX);*/
+	
+	if (array[0] == HEAD_NUMBER && array[5] == 0xFF && array[6] == 0xFF && array[7] == 0xFF) {	
+		uint32_t numericalData = (array[4] << 24) | (array[3] << 16) | (array[2] << 8) | (array[1]);
+		ackDisplay();
+		return numericalData;
+	}
 }
 
 
+float precSetpoint;
 float getSetpoint() {
 	int val2=0;
 	float val1=0;
 	float oldsetpoint;
 	val2=getDisplayInt(3)*10;
 	val1=val2+getDisplayInt(4);
-	#ifdef DEBUGDEV
-		SERIAL_OUT.print("Setpoint retrieved from display: ");SERIAL_OUT.println(val1/10);
-	#endif
-	return val1/10;	
+	if (precSetpoint!=(val1/10)) {
+		#ifdef DEBUGDEV
+			SERIAL_OUT.print("Setpoint retrieved from display: ");SERIAL_OUT.println(val1/10);
+		#endif	
+		precSetpoint=val1/10;	
+		return val1/10;
+	} else {
+		return val1/10;
+	}		
 }
 
 //COMANDO
@@ -74,14 +90,14 @@ void cursore(int cursorvalue) {
 }
 
 void bclockON(){
-  serialDisplay.print("vis p4,1");
+  /*serialDisplay.print("vis p4,1");
   ackDisplay();
   serialDisplay.print("vis p3,1");
   ackDisplay();
   serialDisplay.print("vis p2,1");
   ackDisplay();
   serialDisplay.print("vis p1,1");
-  ackDisplay();
+  ackDisplay();*/
   serialDisplay.print("vis p0,1");
   ackDisplay();
 }
@@ -157,11 +173,15 @@ void reset_Min_Max(){
 	fH_min=99;
 }
 
+bool sec;
 void sendHour(){
+  serialDisplay.print("vis t18,");serialDisplay.print(sec);
+  ackDisplay();	
   serialDisplay.print("n17.val=");serialDisplay.print(getNTPhour()); 
   ackDisplay();
   serialDisplay.print("n18.val=");serialDisplay.print(getNTPminute()); 
   ackDisplay();  
+  sec=!sec;
 }
 
 void sendDate(){
@@ -177,6 +197,7 @@ void ackDisplay(){
   serialDisplay.write(0xff); 
   serialDisplay.write(0xff); 
   serialDisplay.write(0xff);
+  //delay(10);
 }
 
 void backlightDisplay(int l){
