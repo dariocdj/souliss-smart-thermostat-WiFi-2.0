@@ -215,7 +215,7 @@
         <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
         <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
         <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
-        <custom_esp8266_d1_mini_CpuFrequency>80</custom_esp8266_d1_mini_CpuFrequency>
+        <custom_esp8266_d1_mini_CpuFrequency>160</custom_esp8266_d1_mini_CpuFrequency>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -395,12 +395,24 @@
         <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
         <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
         <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
-        <custom_esp8266_d1_mini_CpuFrequency>80</custom_esp8266_d1_mini_CpuFrequency>
+        <custom_esp8266_d1_mini_CpuFrequency>160</custom_esp8266_d1_mini_CpuFrequency>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
   <ItemGroup>
     <None Include="board.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="bright.ino">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="checkRele.ino">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="getTemp.ino">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="reset_resync.ino">
       <SubType>compile</SubType>
     </None>
     <None Include="SST2_beta_0.1.ino">

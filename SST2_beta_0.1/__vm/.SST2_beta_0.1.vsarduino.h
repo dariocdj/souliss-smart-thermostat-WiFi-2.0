@@ -27,10 +27,15 @@
 
 //
 //
-void getTemp();
 void bright(int lum);
 void checkRele();
+void getTemp();
+void reset_resync();
 
 #include "pins_arduino.h" 
 #include "arduino.h"
 #include "SST2_beta_0.1.ino"
+#include "bright.ino"
+#include "checkRele.ino"
+#include "getTemp.ino"
+#include "reset_resync.ino"

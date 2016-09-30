@@ -68,8 +68,8 @@
 
 //AWAY
 #define TEMP_MINUS 1
-#define HYSTERESIS_PLUS 0,2
-#define HYSTERESIS_MINUS 0,3
+#define HYSTERESIS_PLUS 0.2
+#define HYSTERESIS_MINUS 0.3
 
 //SERIAL
 #define SERIAL_OUT Serial

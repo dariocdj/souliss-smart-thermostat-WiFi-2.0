@@ -88,6 +88,8 @@ boolean b=0;
 void setup()
 {
   SERIAL_OUT.begin(115200);
+  digitalWrite(14,LOW);
+  digitalWrite(12,LOW);
   setupDisplay();
 
   //SPIFFS
@@ -159,13 +161,13 @@ void setup()
   initNTP();
 
 
-  
+  page(1);
   backlightDisplay(10);
   bclockOFF();
   getTemp(); 
   sendHour();
   sendDate();
-  page(1);
+  
 }
 
 void loop() {       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,9 +177,10 @@ EXECUTEFAST() {
   UPDATEFAST();
 
 	
-  //FAST_910ms() {
-    //sendHour();
-  //}
+  FAST_910ms() {
+    sendHour();
+	//setpoint_retrieved=getSetpoint();
+  }
   
   SHIFT_210ms(0) {
 
@@ -201,24 +204,15 @@ EXECUTESLOW() {
 	bclockOFF();
   }
   
-  SLOW_x10s(3) {
+  SLOW_x10s(6) {
 	setpoint_retrieved=getSetpoint();  
 	checkRele();
   }
+
   
   SLOW_50s() {
-	sendHour();
 	sendDate();
-	//At 03.00 is time to reset min/max temperature & synching NTP
-	int hour=getNTPhour();
-	int min=getNTPminute();
-	if (hour==3 && min==0) {
-		#ifdef DEBUGDEV
-			SERIAL_OUT.print("INIT_NTP + RESET MIN-MAX VALUE @ ");Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
-		#endif
-		initNTP();
-		reset_Min_Max();
-	}
+	reset_resync();
   }
 
 //  SLOW_15m() {
@@ -235,81 +229,4 @@ EXECUTESLOW() {
   // Look for a new sketch to update over the air
   ArduinoOTA.handle();
   yield();    
-}
-
-
-
-
-void getTemp() {
-  read_another_time:
-  // Read temperature value from DHT sensor and convert from single-precision to half-precision
-  fValT = dht.readTemperature();
-  #ifdef DEBUG
-    SERIAL_OUT.print("CHECK Temperature: ");SERIAL_OUT.println(fValT);
-  #endif
-  if (!isnan(fValT)) {
-    temperature = fValT; //memorizza temperatura se non è Not A Number
-    //Import temperature into T31 Thermostat
-  } else {
-    bFlagBegin = true;
-  }
-
-  // Read humidity value from DHT sensor and convert from single-precision to half-precision
-  fValT = dht.readHumidity();
-  #ifdef DEBUG
-    SERIAL_OUT.print("CHECK Humidity: ");SERIAL_OUT.println(fValT);
-  #endif
-  if (!isnan(fValT)) {
-    humidity = fValT;
-  } else {
-    bFlagBegin = true;
-  }
-
-  if (bFlagBegin) {
-    //if DHT fail then try to reinit
-    dht.begin();
-    bFlagBegin=false;
-	#ifdef DEBUGDEV
-      SERIAL_OUT.println(" dht.begin();");
-      SERIAL_OUT.println(" read another time");
-	#endif
-    goto read_another_time;
-  }  
-  int humi = humidity;
-  if(temperatureprev!=temperature || humidityprev!=humi){
-	#ifdef DEBUG
-	  Serial.print("    update T&H on: ");Serial.print(getNTPday());Serial.print(".");Serial.print(getNTPmonth());Serial.print(".");Serial.print(getNTPyear());Serial.print(" @ ");
-	  Serial.print(getNTPhour());Serial.print(":");Serial.println(getNTPminute());
-    #endif
-	send_T_H_display(temperature,humidity);
-  }
-  temperatureprev = temperature;
-  humidityprev = humi;  
-}
-
-
-void bright(int lum) {
-	int va = ((float)lum);
-	if (va > 100) va = 100;
-	if (va < 0) va = 0;
-	#ifdef DEBUGDEV
-		SERIAL_OUT.print("display bright= ");SERIAL_OUT.println(va);
-	#endif
-	backlightDisplay(va);
-}
-
-
-void checkRele() {
-	if (temperature > setpoint_retrieved && relaystatus==1) {
-		SERIAL_OUT.print("	DEACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.print(getNTPminute());
-		SERIAL_OUT.print(" Setpoint: ");Serial.print(setpoint_retrieved);SERIAL_OUT.print(" Temperature: ");Serial.println(temperature);
-		digitalWrite(RELE,0);
-		relaystatus=0;
-	}
-	if (temperature < setpoint_retrieved && relaystatus==0) {
-		SERIAL_OUT.print("	ACTIVATE RELAY @ ");Serial.print(getNTPhour());Serial.print(":");Serial.print(getNTPminute());
-		SERIAL_OUT.print(" Setpoint: ");Serial.print(setpoint_retrieved);SERIAL_OUT.print(" Temperature: ");Serial.println(temperature);
-		digitalWrite(RELE,1);
-		relaystatus=1;
-	}
 }
