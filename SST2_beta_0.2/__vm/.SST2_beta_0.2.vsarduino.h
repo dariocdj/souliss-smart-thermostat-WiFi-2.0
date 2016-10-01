@@ -23,6 +23,7 @@
 #define ARDUINO 106011
 #define ARDUINO_ESP8266_WEMOS_D1MINI
 #define ARDUINO_ARCH_ESP8266
+ #include <VM_DBG.h>
 
 //
 //
@@ -33,7 +34,7 @@ void reset_resync();
 
 #include "pins_arduino.h" 
 #include "arduino.h"
-#include "SST2_beta_0.1.ino"
+#include "SST2_beta_0.2.ino"
 #include "bright.ino"
 #include "checkRele.ino"
 #include "getTemp.ino"
