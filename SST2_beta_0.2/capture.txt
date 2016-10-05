@@ -15991,3 +15991,185 @@ Dsetpoint		= 25
 Setpoint float retrieved= 25.20
 CHECK Temperature: 23.20
 CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 0
+Dsetpoint		= 25
+Setpoint float retrieved= 25.00
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 58.00
+    update T&H on: 5.10.2016 @ 7:27
+    T= 23.2 deg RH=58 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+    update T&H on: 5.10.2016 @ 7:27
+    T= 23.2 deg RH=57 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 58.00
+    update T&H on: 5.10.2016 @ 7:28
+    T= 23.2 deg RH=58 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+    update T&H on: 5.10.2016 @ 7:28
+    T= 23.2 deg RH=57 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 58.00
+    update T&H on: 5.10.2016 @ 7:29
+    T= 23.2 deg RH=58 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+    update T&H on: 5.10.2016 @ 7:29
+    T= 23.2 deg RH=57 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+Transmit NTP Request
+NTP failed
+Receive NTP Response
+Spiffs Json parsed value of Tzone :1
+Spiffs Json parsed value of DayLightSavingTime :0
+This is NTP Response with tzone: 1 and tDayLighttemp OFF
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 58.10
+    update T&H on: 5.10.2016 @ 7:31
+    T= 23.2 deg RH=58 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+    update T&H on: 5.10.2016 @ 7:31
+    T= 23.2 deg RH=57 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+CHECK Temperature: 23.20
+CHECK Humidity: 57.90
+Dsetpointdec		= 2
+Dsetpoint		= 25
+Setpoint float retrieved= 25.20
+CHECK Temperature: 23.20
+CHECK Humidity: 58.00
+    update T&H on: 5.10.2016 @ 7:32
+    T= 23.2 deg RH=58 %
+T_MAX= 23.50  T_MIN= 23.10
+H_MAX= 59  H_MIN= 57
