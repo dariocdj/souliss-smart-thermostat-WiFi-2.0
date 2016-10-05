@@ -206,6 +206,7 @@ EXECUTESLOW() {
   
   SLOW_x10s(2) {
 	setpoint_retrieved=getSetpoint();  
+	SERIAL_OUT.print("Setpoint float retrieved= ");SERIAL_OUT.println(setpoint_retrieved);
 	checkRele();
   }
 

@@ -219,7 +219,7 @@
         <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
         <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
         <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
-        <custom_esp8266_d1_mini_CpuFrequency>160</custom_esp8266_d1_mini_CpuFrequency>
+        <custom_esp8266_d1_mini_CpuFrequency>80</custom_esp8266_d1_mini_CpuFrequency>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -403,7 +403,7 @@
         <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
         <VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>1</VM.DebugVariablesWindow.ColumnVisibleVariableTimeStamp>
         <VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>1</VM.DebugVariablesWindow.ColumnVisibleVariableHitCount>
-        <custom_esp8266_d1_mini_CpuFrequency>160</custom_esp8266_d1_mini_CpuFrequency>
+        <custom_esp8266_d1_mini_CpuFrequency>80</custom_esp8266_d1_mini_CpuFrequency>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
