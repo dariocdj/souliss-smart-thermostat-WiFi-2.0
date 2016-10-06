@@ -39,9 +39,9 @@ Nextion nex(serialDisplay);
 void setupDisplay(){
   serialDisplay.begin(9600);
   delay(1000);
-  serialDisplay.print("bauds=9600");
-  ackDisplay();
   serialDisplay.print("baud=9600");
+  ackDisplay();
+  serialDisplay.print("bauds=9600");
   ackDisplay();
   
   //nex.init();
@@ -58,18 +58,16 @@ void poll_data(){
 NextionNumber Dsetpoint		(nex,1,28,"n3");
 NextionNumber Dsetpointdec	(nex,1,29,"n4");
 //NextionNumber Dsetpointdec	(nex,1,22,"n0");
-float precSetpoint;
 float getSetpoint() {
 	int val2=0;
 	int val1=0;
 	float setp;
-	
 	val1=Dsetpointdec.getValue();
 	val2=Dsetpoint.getValue();
-	
 	SERIAL_OUT.print("Dsetpointdec		= ");SERIAL_OUT.println(val1);
 	SERIAL_OUT.print("Dsetpoint		= ");SERIAL_OUT.println(val2);
 	setp=(val2*10)+val1;
+	yield();
 	return setp/10;
 }
 

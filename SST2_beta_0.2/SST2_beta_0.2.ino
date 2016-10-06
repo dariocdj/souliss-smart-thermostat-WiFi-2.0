@@ -109,7 +109,8 @@ void setup()
   }
   else
   {
-    ReadAllSettingsFromSPIFFS();
+    //ReadAllSettingsFromSPIFFS();
+	ReadAllSettingsFromPreferences();
   }
 
   backlightDisplay(10);
