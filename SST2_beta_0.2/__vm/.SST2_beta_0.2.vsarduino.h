@@ -23,7 +23,6 @@
 #define ARDUINO 106011
 #define ARDUINO_ESP8266_WEMOS_D1MINI
 #define ARDUINO_ARCH_ESP8266
- #include <VM_DBG.h>
 
 //
 //

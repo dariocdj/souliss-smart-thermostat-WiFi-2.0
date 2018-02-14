@@ -44,7 +44,7 @@ void setupDisplay(){
   serialDisplay.print("bauds=9600");
   ackDisplay();
   
-  //nex.init();
+  nex.init();
 }
 
 //LETTURE
@@ -59,6 +59,7 @@ NextionNumber Dsetpoint		(nex,1,28,"n3");
 NextionNumber Dsetpointdec	(nex,1,29,"n4");
 //NextionNumber Dsetpointdec	(nex,1,22,"n0");
 float getSetpoint() {
+	serialDisplay.flush();
 	int val2=0;
 	int val1=0;
 	float setp;
