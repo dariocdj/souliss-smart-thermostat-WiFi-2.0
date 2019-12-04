@@ -15,6 +15,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
+#include <EEPROM.h>
 #include "FS.h"                               //SPIFFS
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
@@ -45,8 +46,6 @@
 //#include "topics.h"
 #include <Arduino.h>
 #include <dummy.h>
-
-
 
 #include <SoftwareSerial.h>
 
@@ -113,18 +112,18 @@ void setup()
 	ReadAllSettingsFromPreferences();
   }
 
-  backlightDisplay(10);
+  backlightDisplay(100);
 
   Initialize();               //Init Souliss Framework
-
+  
 #if(DYNAMIC_CONNECTION)
-  DYNAMIC_CONNECTION_Init();
+  DYNAMIC_CONNECTION_Init(); 
 #else
-#if(DHCP_OPTION)
+  #if(DHCP_OPTION)
   STATIC_CONNECTION_Init_DHCP();
-#else
+  #else
   STATIC_CONNECTION_Init_STATICIP();
-#endif
+  #endif
 #endif
 
 
@@ -141,18 +140,21 @@ void setup()
   pinMode(RELE, OUTPUT);    // Heater
   dht.begin();
 
-
-
-
   
   // Init the OTA
   // Set Hostname.
-  String hostname(HOSTNAME);
-  hostname += String(ESP.getChipId(), HEX);
+  //Read Hostname from WebConfig
+    char HostName[31];   
+      #if(DYNAMIC_CONNECTION)
+        String HostNameTemp = Read_NodeName();
+      #else  
+        String HostNameTemp = "SST2";
+      #endif
+   HostNameTemp.toCharArray(HostName,sizeof(HostName));
   #ifdef DEBUG
-    SERIAL_OUT.print("set OTA hostname: "); SERIAL_OUT.println(hostname);
+    SERIAL_OUT.print("set OTA hostname: "); SERIAL_OUT.println(HostName);
   #endif
-  ArduinoOTA.setHostname((const char *)hostname.c_str());
+  ArduinoOTA.setHostname(HostName);  
   ArduinoOTA.begin();
   yield();
   
@@ -223,12 +225,15 @@ EXECUTESLOW() {
 //  }
 
 
-  #if(DYNAMIC_CONNECTION==1)
-    DYNAMIC_CONNECTION_slow();
+  #if(DYNAMIC_CONNECTION)
+ //   DYNAMIC_CONNECTION_slow();
+
   #endif
 
-  }
+ }
   // Look for a new sketch to update over the air
   ArduinoOTA.handle();
-  yield();    
+    #if(DYNAMIC_CONNECTION)
+      runWebServer();
+    #endif
 }

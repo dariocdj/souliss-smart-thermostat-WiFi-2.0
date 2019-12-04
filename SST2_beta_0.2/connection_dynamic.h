@@ -15,50 +15,38 @@
        https://github.com/esp8266/Arduino
 ***************************************************************************/
 
-
-
-#define DYNAMIC_CONNECTION_Init() \             /** Read the IP configuration from the EEPROM, if not available start the node as access point */ 
+#define DYNAMIC_CONNECTION_Init() \     
   SERIAL_OUT.println("start DYNAMIC_CONNECTION_Init"); \
+  startWebServer(); \
   if (!ReadIPConfiguration()) \
   { \
-    /** Start the node as access point with a configuration WebServer */ \
     SetAccessPoint(); \
-    startWebServer(); \
     SERIAL_OUT.println("display_print_splash_waiting_need_configuration"); \
-    /** We have nothing more than the WebServer for the configuration */ \
-    /** to run, once configured the node will quit this. */ \
-    while (1) \
-    { \
-      yield(); \
-      runWebServer(); \
-    } \
   } \
   if (IsRuntimeGateway()) \
   { \
     SERIAL_OUT.println("display_print_splash_waiting_connection_gateway"); \
-    /** Connect to the WiFi network and get an address from DHCP*/ \
-    SetAsGateway(myvNet_dhcp);       /** Set this node as gateway for SoulissApp */ \
+    SetAsGateway(myvNet_dhcp); \
     SetAddressingServer(); \
   } \
   else \
   { \
+    U16 SoulissVNETAddress = Read_SoulissVNETAddress(); \
+    U16 SoulissVNETGateway = Read_SoulissVNETGateway(); \    
     SERIAL_OUT.println("display_print_splash_waiting_connection_peer"); \
-    /** This board request an address to the gateway at runtime, no need */ \
-    /** to configure any parameter here. */ \
-    SetDynamicAddressing(); \
-    GetAddress(); \
-    SERIAL_OUT.println("Address received"); \
+    SetAddress(SoulissVNETAddress, 0xFF00, SoulissVNETGateway); \
+    SERIAL_OUT.println("Address set from Webconfig"); \  
   } \
-
-#define DYNAMIC_CONNECTION_fast()      /** Run communication as Gateway or Peer */ \
-  if (IsRuntimeGateway()) \
+  
+  
+#define DYNAMIC_CONNECTION_fast() \
+  if (IsRuntimeGateway())  \
     FAST_GatewayComms(); \
   else \
     FAST_PeerComms(); \
   
 
-#define DYNAMIC_CONNECTION_slow() \     /** Run communication as Peer */ 
-  /** If running as Peer */ \
-  if (!IsRuntimeGateway()) {  \
-  SLOW_PeerJoin(); \
-    } \
+#define DYNAMIC_CONNECTION_slow() \ 
+    if (!IsRuntimeGateway())  \
+      SLOW_PeerJoin(); \
+   

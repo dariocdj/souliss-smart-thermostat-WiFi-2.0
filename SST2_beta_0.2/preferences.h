@@ -32,7 +32,7 @@
 //DISPLAY BRIGHT
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define BRIGHT_MAX 100         
-#define BRIGHT_MIN_DEFAULT 15  
+#define BRIGHT_MIN_DEFAULT 100  
 #define BRIGHT_STEP_FADE_IN 20 
 #define BRIGHT_STEP_FADE_OUT 1
 
@@ -40,7 +40,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //0 Static Connection
 //1 Dynamic Connection
-#define DYNAMIC_CONNECTION 0
+#define DYNAMIC_CONNECTION 1
 
 //DHCP
 //1 Use DHCP IP
@@ -50,27 +50,25 @@
 
 //STATIC IP
 // use commas between number
-#define STATIC_IP 192,168,1,51
+#define STATIC_IP 192,168,0,92
 #define STATIC_SUBNET 255,255,255,0
-#define STATIC_IP_GW 192,168,1,1
+#define STATIC_IP_GW 192,168,0,1
 
 // **** Define the WiFi name and password ****
 //Only for DYNAMIC_CONNECTION = 0
 #define WIFICONF_INSKETCH
-#define WiFi_SSID               "		"
-#define WiFi_Password           "		"   
+#define WiFi_SSID               "Serenario-Desk"
+#define WiFi_Password           "0xsersgheps05"   
 
 // Define the network configuration according to your router settingsuration according to your router settings
 // and the other on the wireless oneless one
 //Only for DYNAMIC_CONNECTION = 0
-#define peer_address  0xAB21
+#define peer_address  0xAB23
 #define myvNet_subnet 0xFF00
-#define wifi_bridge_address    0xAB01 //gateway
+#define wifi_bridge_address    0x0000 //gateway
 
 
 //TOPICS PUBLISH&SUBSCRIBE
 //Define if you want topics on display
 #define ACTIVATETOPICSPAGE 0 
 #define TOPICSPAGESNUMBER 2 // 1 if you have less than 3 topics subscribed, 2 if you have more than 3 topics subscribed
-
-

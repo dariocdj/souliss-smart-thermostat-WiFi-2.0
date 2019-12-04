@@ -22,12 +22,10 @@ uint8_t static_subnet_mask[4] = {STATIC_SUBNET};
 uint8_t static_ip_gateway[4]  = {STATIC_IP_GW}; 
 
 #define STATIC_CONNECTION_Init_DHCP() \
-    SERIAL_OUT.println("start STATIC_CONNECTION_Init_DHCP"); \
+  SERIAL_OUT.println("start STATIC_CONNECTION_Init_DHCP"); \
   /** Connect to the WiFi network and get an address from DHCP*/ \
   GetIPAddress(); \
   SERIAL_OUT.println("Address received"); \
-  /** This is the vNet address for this node, used to communicate with other */ \
-  /** nodes in your Souliss network*/ \
   SetAddress(peer_address, myvNet_subnet, wifi_bridge_address); \         /* Address on the wireless interface*/ 
   
 #define STATIC_CONNECTION_Init_STATICIP() \
@@ -35,6 +33,7 @@ uint8_t static_ip_gateway[4]  = {STATIC_IP_GW};
   SetIPAddress(static_ip_address, static_subnet_mask, static_ip_gateway); \
   SetAddress(peer_address, myvNet_subnet, wifi_bridge_address);  \        
   SERIAL_OUT.println("Address set from preferences"); \  
+ 
   
 #define STATIC_CONNECTION_fast() \
-FAST_PeerComms(); \
+  FAST_PeerComms(); \

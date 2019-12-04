@@ -27,7 +27,8 @@ float fT_min=99;
 int fH_max=0; 
 int fH_min=99;
  
-SoftwareSerial serialDisplay(14, 12, false, 256); 
+//SoftwareSerial serialDisplay(14, 12, false, 256); 
+SoftwareSerial serialDisplay(14, 12); 
 
 //Def var display
 Nextion nex(serialDisplay);
@@ -207,4 +208,3 @@ int dopovirgola(float fI){
 
 /////////////////////////////////////////////////////////////////////////// 
  
-
